@@ -6,6 +6,9 @@
 | physical.night_lights.mean | information/physical | Mean nighttime light intensity | dataset_native | monthly/yearly | remote_sensing |
 | physical.night_lights.sum | information/physical | Total nighttime light intensity | dataset_native | monthly/yearly | remote_sensing |
 | physical.night_lights.quality | information/physical | Nighttime-light observation quality | categorical | daily/monthly/yearly | remote_sensing_quality |
+| population.total | population | Total population | persons | annual/static | modelled_geospatial_aggregate |
+| population.male | population | Male population | persons | annual/static | modelled_geospatial_aggregate |
+| population.female | population | Female population | persons | annual/static | modelled_geospatial_aggregate |
 | health.wastewater.analyte_concentration | health/environment | Wastewater analyte concentration | dataset_native | sample | laboratory_measurement |
 | health.wastewater.mass_load | health/environment | Wastewater analyte mass load | dataset_native | sample/day | laboratory_measurement |
 | health.wastewater.detection | health/environment | Wastewater analyte detection | binary | sample | laboratory_measurement |
@@ -35,6 +38,7 @@
 These variables are **observations or proxies**, not behavioural conclusions. In particular:
 
 - nighttime light is not GDP;
+- population estimates are not census counts unless the source explicitly says so;
 - wastewater concentration is not prevalence or individual consumption;
 - electricity demand is not directly equivalent to economic output;
 - atmospheric concentration is not identical to local emissions;
