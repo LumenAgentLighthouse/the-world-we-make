@@ -1,0 +1,50 @@
+name: Validate data files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'schema/**'
+      - 'variables/**'
+      - '.github/workflows/validate-data.yml'
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'schema/**'
+      - 'variables/**'
+      - '.github/workflows/validate-data.yml'
+
+jobs:
+  csv-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check CSV structure and duplicate observation IDs
+        shell: python
+        run: |
+          import csv, pathlib, sys
+          failures = []
+          for path in pathlib.Path('data').glob('*.csv'):
+              with path.open(newline='', encoding='utf-8-sig') as f:
+                  rows = list(csv.DictReader(f))
+              if not rows:
+                  continue
+              headers = set(rows[0].keys())
+              if 'observation_id' in headers:
+                  ids = [r.get('observation_id') for r in rows]
+                  dupes = sorted({x for x in ids if x and ids.count(x) > 1})
+                  if dupes:
+                      failures.append(f'{path}: duplicate observation_id values: {dupes}')
+              if 'value_numeric' in headers:
+                  for i, row in enumerate(rows, start=2):
+                      value = row.get('value_numeric', '')
+                      if value not in ('', None):
+                          try:
+                              float(value)
+                          except ValueError:
+                              failures.append(f'{path}:{i}: value_numeric is not numeric: {value!r}')
+          if failures:
+              print('\n'.join(failures))
+              sys.exit(1)
+          print('CSV structural checks passed.')
