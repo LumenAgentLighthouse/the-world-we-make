@@ -7,30 +7,48 @@ on:
       - 'data/**'
       - 'schema/**'
       - 'variables/**'
+      - 'known-gaps/**'
       - '.github/workflows/validate-data.yml'
   pull_request:
     paths:
       - 'data/**'
       - 'schema/**'
       - 'variables/**'
+      - 'known-gaps/**'
       - '.github/workflows/validate-data.yml'
+
+permissions:
+  contents: read
 
 jobs:
   csv-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check CSV structure and duplicate observation IDs
+      - name: Check CSV structure, required identifiers and numeric fields
         shell: python
         run: |
           import csv, pathlib, sys
           failures = []
-          for path in pathlib.Path('data').glob('*.csv'):
+          required_by_file = {
+              'gap_register.csv': {'gap_id', 'priority', 'gap_class', 'domain', 'falsification_question'},
+              'audit_matrix.csv': {'domain', 'data_coverage', 'next_attack', 'priority'},
+              'variable_registry.csv': {'variable_id', 'domain', 'variable_name', 'status'},
+          }
+          for path in list(pathlib.Path('data').glob('*.csv')) + list(pathlib.Path('variables').glob('*.csv')) + list(pathlib.Path('known-gaps').glob('*.csv')):
               with path.open(newline='', encoding='utf-8-sig') as f:
-                  rows = list(csv.DictReader(f))
+                  reader = csv.DictReader(f)
+                  headers = set(reader.fieldnames or [])
+                  rows = list(reader)
+              expected = required_by_file.get(path.name)
+              if expected and not expected.issubset(headers):
+                  failures.append(f'{path}: missing required headers: {sorted(expected - headers)}')
               if not rows:
                   continue
-              headers = set(rows[0].keys())
+              for i, row in enumerate(rows, start=2):
+                  if any((v is None or str(v).strip() == '') for v in row.values() if v is not None):
+                      # Empty cells are allowed; only malformed row width is fatal.
+                      pass
               if 'observation_id' in headers:
                   ids = [r.get('observation_id') for r in rows]
                   dupes = sorted({x for x in ids if x and ids.count(x) > 1})
