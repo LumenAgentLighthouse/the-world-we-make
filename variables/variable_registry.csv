@@ -1,0 +1,17 @@
+variable_id,domain,variable_name,unit,preferred_frequency,sensitivity,causal_role,status
+labour_unemployment_rate,employment,unemployment rate,% of labour force,annual/monthly,aggregate,outcome/context,ACTIVE
+electricity_access_share,energy,access to electricity,% population,annual,aggregate,infrastructure/context,ACTIVE
+fixed_broadband_subscriptions,technology,fixed broadband subscriptions,subscriptions,annual,aggregate,infrastructure/context,ACTIVE
+fixed_broadband_subscriptions_per_100,technology,fixed broadband subscriptions per 100 people,subscriptions per 100 people,annual,aggregate,infrastructure/context,ACTIVE
+population_total,population,total population,persons,annual,aggregate,exposure/context,ACTIVE
+net_migration,population,net migration,persons,annual,aggregate,outcome/exposure,ACTIVE
+life_expectancy,health,life expectancy at birth,years,annual,aggregate,outcome,ACTIVE
+electricity_consumption_per_capita,energy,electricity consumption per capita,kWh/person,annual,aggregate,exposure,ACTIVE
+co2_emissions_per_capita,environment,CO2 emissions per capita,tonnes/person,annual,aggregate,exposure,ACTIVE
+urban_population_share,built_environment,urban population share,% population,annual,aggregate,context,ACTIVE
+informal_activity_estimate,economy,informal economic activity estimate,source-defined,annual/monthly,aggregate,exposure/context,PROPOSED
+local_cultural_capacity,culture,local cultural production capacity,source-defined,monthly/quarterly/annual,aggregate,exposure/context,PROPOSED
+human_capability_stock,capability,human capability stock,source-defined,annual,aggregate,exposure/context,PROPOSED
+local_material_flow,place_metabolism,local material flow,source-defined,monthly/quarterly/annual,aggregate,exposure/context,PROPOSED
+local_information_capacity,information,local information capacity,source-defined,monthly/quarterly/annual,aggregate,exposure/context,PROPOSED
+security_provider_coverage,security,security provider coverage,source-defined,monthly/quarterly/annual,aggregate,exposure/context,PROPOSED
