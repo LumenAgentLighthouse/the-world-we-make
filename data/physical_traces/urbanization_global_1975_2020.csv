@@ -1,0 +1,7 @@
+place_id,year,variable_id,value,unit,evidence_type,source_id,confidence,caveat
+WLD,1975,physical.urbanization.urban_share_degree_of_urbanisation,69,percent,REMOTE_SENSING_DERIVED,src_jrc_ghsl_smod_r2023a,high,Global urban share using the UN-endorsed Degree of Urbanisation: cities plus towns/semi-dense areas
+WLD,2020,physical.urbanization.urban_share_degree_of_urbanisation,80,percent,REMOTE_SENSING_DERIVED,src_jrc_ghsl_smod_r2023a,high,Global urban share using the UN-endorsed Degree of Urbanisation: cities plus towns/semi-dense areas
+WLD,1975,physical.urbanization.urban_centre_share,32,percent,REMOTE_SENSING_DERIVED,src_jrc_ghsl_smod_r2023a,high,Urban centre population share
+WLD,1975,physical.urbanization.towns_semidense_share,37,percent,REMOTE_SENSING_DERIVED,src_jrc_ghsl_smod_r2023a,high,Towns and semi-dense population share
+WLD,2020,physical.urbanization.urban_centre_share,45,percent,REMOTE_SENSING_DERIVED,src_jrc_ghsl_smod_r2023a,high,Urban centre population share
+WLD,2020,physical.urbanization.towns_semidense_share,35,percent,REMOTE_SENSING_DERIVED,src_jrc_ghsl_smod_r2023a,high,Towns and semi-dense population share
