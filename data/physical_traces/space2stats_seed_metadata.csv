@@ -1,0 +1,7 @@
+dataset,spatial_unit,coverage,source,source_url,access_note,repo_role
+population,H3 level 6 / ADM2,global,World Bank Space2Stats,https://datacatalog.worldbank.org/search/dataset/0066820/space2stats-database,"Global geospatial statistics; API and ADM2 summaries",seed metadata
+urbanization,H3 level 6 / ADM2,global,World Bank Space2Stats,https://datacatalog.worldbank.org/search/dataset/0066820/space2stats-database,"ADM2 summaries available; based on Degree of Urbanization / GHS-SMOD",seed metadata
+nighttime_lights,H3 level 6 / ADM2,global,World Bank Space2Stats,https://datacatalog.worldbank.org/search/dataset/0066820/space2stats-database,"Annual VIIRS/Black Marble statistics; 2012 onward depending on product",seed metadata
+flood_exposure,H3 level 6 / ADM2,global,World Bank Space2Stats,https://datacatalog.worldbank.org/search/dataset/0066820/space2stats-database,"Population exposed to >15 cm flooding for a 1-in-100-year event; current catalogue uses Fathom v3 + WorldPop",seed metadata
+built_area,H3 level 6 / ADM2,global,GHSL via Space2Stats,https://datacatalog.worldbank.org/search/dataset/0066820/space2stats-database,"Built-area statistics are part of the broader Space2Stats spatial indicator ecosystem",source-registration
+climate_spi,H3 level 6 / ADM2,global,World Bank Space2Stats,https://datacatalog.worldbank.org/search/dataset/0066820/space2stats-database,"Standardized precipitation index time series; preserve drought metric as a climate indicator, not direct damage",source-registration
