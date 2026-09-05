@@ -1,0 +1,5 @@
+place_id,year,variable_id,value,unit,evidence_type,source_id,confidence,caveat
+USA,2016,physical.waste.municipal_generated_per_capita,2.24,kg_per_person_per_day,REPORTED_ESTIMATE,src_world_bank_what_a_waste_2_0,medium,Country estimate adjusted to 2016 in What a Waste 2.0; municipal solid waste not all material waste
+CAN,2016,physical.waste.municipal_generated_per_capita,1.94,kg_per_person_per_day,REPORTED_ESTIMATE,src_world_bank_what_a_waste_2_0,medium,Country estimate adjusted to 2016 in What a Waste 2.0; municipal solid waste not all material waste
+BMU,2016,physical.waste.municipal_generated_per_capita,4.54,kg_per_person_per_day,REPORTED_ESTIMATE,src_world_bank_what_a_waste_2_0,medium,Country estimate adjusted to 2016 in What a Waste 2.0; unusually high tourism-related generation is noted in the source
+WLD,2016,physical.waste.municipal_generated_per_capita,0.74,kg_per_person_per_day,GLOBAL_ESTIMATE,src_world_bank_what_a_waste_2_0,medium,Global average; not directly comparable to individual country measurement systems
