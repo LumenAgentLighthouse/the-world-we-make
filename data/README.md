@@ -2,17 +2,22 @@
 
 This directory contains ingested observations and source manifests.
 
-## First seed release
+## Seed releases
 
-`seed_world_bank_2024.csv` is a deliberately small, auditable seed dataset using World Bank World Development Indicators. It is not presented as a representative sample of the world; it is the first machine-readable ingestion used to exercise the project's provenance and observation model.
+`seed_world_bank_2024.csv` is the first deliberately small, auditable seed using World Bank World Development Indicators. It contains country-level 2024 observations for population, GDP per capita and life expectancy.
 
-The seed currently contains country-level 2024 observations for population, GDP per capita and life expectancy where the cited World Bank comparison pages expose all three values.
+`seed_global_indicators_2025.csv` adds a second cross-domain seed using current Our World in Data presentations of ILO/World Bank unemployment estimates, World Bank electricity-access data and ITU/World Bank fixed-broadband data. It deliberately spans different years and measurement types rather than pretending that every variable belongs to one common vintage.
 
-### Rules
+The seed files are not representative samples of the world. They are ingestion exercises intended to prove that observations can be stored with source, definition, unit, time, geography, uncertainty and methodological caveats intact before scaling collection.
+
+## Rules
 
 - Preserve source definitions and units.
 - Never silently convert estimates into facts.
 - Keep source identifiers attached to observations.
 - Do not mix different vintages or definitions under one variable without recording the distinction.
 - Missing observations are preferable to invented values.
-- This seed is a starting point, not the finished dataset.
+- Distinguish counts from rates and subscriptions from unique users.
+- Preserve nearest-year substitutions and modeled estimates as methodological metadata rather than hiding them.
+- Keep third-party licensing and attribution requirements with source metadata.
+- The seed is a starting point, not the finished dataset.
