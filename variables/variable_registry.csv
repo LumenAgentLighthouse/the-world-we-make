@@ -9,6 +9,7 @@ life_expectancy,health,life expectancy at birth,years,annual,aggregate,outcome,A
 electricity_consumption_per_capita,energy,electricity consumption per capita,kWh/person,annual,aggregate,exposure,ACTIVE
 co2_emissions_per_capita,environment,CO2 emissions per capita,tonnes/person,annual,aggregate,exposure,ACTIVE
 urban_population_share,built_environment,urban population share,% population,annual,aggregate,context,ACTIVE
+GDP_PC_PPP_2021_INTL,economy,GDP per capita in constant international dollars,international-$ at 2021 prices,annual,aggregate,outcome/context,ACTIVE
 informal_activity_estimate,economy,informal economic activity estimate,source-defined,annual/monthly,aggregate,exposure/context,PROPOSED
 local_cultural_capacity,culture,local cultural production capacity,source-defined,monthly/quarterly/annual,aggregate,exposure/context,PROPOSED
 human_capability_stock,capability,human capability stock,source-defined,annual,aggregate,exposure/context,PROPOSED
