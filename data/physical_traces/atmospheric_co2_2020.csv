@@ -1,0 +1,5 @@
+place_id,year,variable_id,value,unit,evidence_type,source_id,confidence,caveat
+BRA,2020,physical.atmosphere.co2_territorial_emissions,483010000,tonnes_CO2,WORLD_CARBON_BUDGET,src_global_carbon_budget_2025_owid,high,Territorial emissions; excludes land-use change and assigns international aviation/shipping outside countries
+NGA,2020,physical.atmosphere.co2_territorial_emissions,135820000,tonnes_CO2,WORLD_CARBON_BUDGET,src_global_carbon_budget_2025_owid,high,Territorial emissions; excludes land-use change and assigns international aviation/shipping outside countries
+GBR,2020,physical.atmosphere.co2_territorial_emissions,312910000,tonnes_CO2,WORLD_CARBON_BUDGET,src_global_carbon_budget_2025_owid,high,Territorial emissions; excludes land-use change and assigns international aviation/shipping outside countries
+ZAF,2020,physical.atmosphere.co2_territorial_emissions,439830000,tonnes_CO2,WORLD_CARBON_BUDGET,src_global_carbon_budget_2025_owid,high,Territorial emissions; excludes land-use change and assigns international aviation/shipping outside countries
