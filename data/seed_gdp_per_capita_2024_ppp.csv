@@ -1,0 +1,2 @@
+observation_id,place_id,time_id,variable_id,value_numeric,value_text,unit,category,sub_category,evidence_type,source_id,confidence,status,missing_reason,caveat,notes
+wbppp24_PLACE,gdpPLACE,2024,GDP_PC_PPP_2021_INTL,VALUE,,international_$_2021_prices,economy,national_accounts,compiled_estimate,OWID_WB_WDI_PPP_2024,HIGH,KNOWN,,Displayed OWID values are rounded to the nearest 10 international dollars where source display is in $k,World Bank WDI 2026 as presented by Our World in Data
