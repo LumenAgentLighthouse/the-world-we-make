@@ -36,7 +36,15 @@ Counts should not be compared as rates without an appropriate denominator. Prese
 
 Correlations, temporal associations and causal evidence are different. Reverse causality, selection, confounding, reporting effects and boundary effects should remain possible explanations.
 
-## 10. Agent discovery
+## 10. Falsification before narrative
+
+Every new variable or derived measure should state what would falsify its obvious interpretation. Every proposed pattern or causal claim must record plausible alternative explanations, confounders, reverse causality, selection effects and measurement-change explanations where relevant. If a proposed finding cannot be meaningfully challenged, it is not ready for promotion.
+
+## 11. Contradictions are data
+
+When credible sources disagree, preserve the competing measurements and their definitions, rather than silently choosing one. Contradictions may reflect real heterogeneity, timing, methodology, boundary differences or reporting processes. Agents should be able to analyse disagreement itself.
+
+## 12. Agent discovery
 
 Analysing agents should be rewarded for finding unexpected relationships, contradictions and missing variables, not for confirming the project's motivating hypotheses.
 
@@ -51,10 +59,13 @@ A useful observation should retain, where available:
 - temporal coverage
 - method
 - unit
-- denominator
+- numerator and denominator
 - uncertainty/confidence
 - known bias
 - transformation/crosswalk
+- methodology and definition version
+- boundary version
+- source vintage
 - evidence status
 
 ## Evidence status
