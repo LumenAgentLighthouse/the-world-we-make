@@ -1,0 +1,5 @@
+place_id,year,variable_id,value,unit,evidence_type,source_id,confidence,caveat
+CHN,2020,physical.freight.container_port_traffic,245103800,TEU,WORLD_BANK_UNCTAD,src_world_bank_unctad_container_port_traffic,high,Counts container flows in TEUs including coastal and international journeys; transshipment is counted as two lifts and empty units are included
+USA,2020,physical.freight.container_port_traffic,54963690,TEU,WORLD_BANK_UNCTAD,src_world_bank_unctad_container_port_traffic,high,Counts container flows in TEUs including coastal and international journeys; transshipment is counted as two lifts and empty units are included
+IND,2020,physical.freight.container_port_traffic,16285810,TEU,WORLD_BANK_UNCTAD,src_world_bank_unctad_container_port_traffic,high,Counts container flows in TEUs including coastal and international journeys; transshipment is counted as two lifts and empty units are included
+GBR,2020,physical.freight.container_port_traffic,8692260,TEU,WORLD_BANK_UNCTAD,src_world_bank_unctad_container_port_traffic,high,Counts container flows in TEUs including coastal and international journeys; transshipment is counted as two lifts and empty units are included
