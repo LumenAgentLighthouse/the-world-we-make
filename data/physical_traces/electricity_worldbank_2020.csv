@@ -1,0 +1,3 @@
+place_id,year,variable_id,value,unit,evidence_type,source_id,confidence,caveat
+IND,2020,physical.electricity.demand_per_capita,901.3996,kWh_per_person,WORLD_BANK_INDICATOR,src_world_bank_wdi_electricity,high,Production less plant own-use and transmission/distribution losses; not equivalent to total energy use
+NGA,2020,physical.electricity.demand_per_capita,145.16,kWh_per_person,WORLD_BANK_INDICATOR,src_world_bank_wdi_electricity,high,Production less plant own-use and transmission/distribution losses; off-grid activity may not be fully captured
