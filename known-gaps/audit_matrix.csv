@@ -7,11 +7,29 @@ place_material_metabolism,DEDICATED_TABLE,WEAK,PARTIAL,LOCAL_TO_NATIONAL,boundar
 security_providers,DEDICATED_TABLE,UNKNOWN,PARTIAL,LOCAL,visibility_and_legitimacy_bias,map provider function coverage reliance and relationships,STRONG
 system_states,DEDICATED_TABLE,PARTIAL,IMPROVING,LOCAL_TO_NATIONAL,label_definition_risk,link state transitions to dimensional evidence and change points,STRONG
 measurement_transitions,DEDICATED_TABLE,PARTIAL,MIXED,MIXED,definition_and_boundary_breaks,record survey law classification and administrative changes,STRONG
-denominators,DEDICATED_TABLE,PARTIAL,MIXED,MIXED,denominator substitution,require explicit denominator IDs for rates,STRONG
+denominators,DEDICATED_TABLE,PARTIAL,MIXED,MIXED,denominator_substitution,require_explicit_denominator_IDs_for_rates,STRONG
 missingness_and_negative_space,DEDICATED_TABLE,PARTIAL,MIXED,MIXED,absence_misclassification,expand defensible detection methods and coverage metadata,STRONG
-agent_analysis,DEDICATED_TABLE,PARTIAL,MIXED,MIXED,confirmation_and_causal_leakage,require falsification alternatives and provenance,STRONG
+agent_analysis,DEDICATED_TABLE,PARTIAL,MIXED,MIXED,confirmation_and_causal_leakage,require_falsification_alternatives_and_provenance,STRONG
 cross_border_culture,DEDICATED_TABLE,WEAK,PARTIAL,COUNTRY_TO_LOCAL,origin_ownership_production_confusion,expand directed exposure consumption adoption mutation and return flows,STRONG
 population_migration,GENERIC_PLUS_DOMAIN,PARTIAL,ANNUAL_MOSTLY,NATIONAL_TO_LOCAL,migration_vs_population_change,add origin_destination_age_and_flow_timing,STRONG
 health,GENERIC_PLUS_DOMAIN,WEAK,ANNUAL_MOSTLY,NATIONAL_TO_LOCAL,diagnosis_access_incidence_confusion,separate risk incidence prevalence diagnosis utilisation outcome,HIGH
 housing_built_environment,GENERIC_PLUS_DOMAIN,WEAK,ANNUAL_MOSTLY,LOCAL_TO_NATIONAL,stock_vs_occupancy_and_boundary_changes,add property housing and physical change series,HIGH
 crime_justice,GENERIC_PLUS_DOMAIN,WEAK,ANNUAL_MOSTLY,LOCAL_TO_NATIONAL,reporting_and_enforcement_bias,connect crime victimisation policing prosecution sentencing and reoffending,HIGH
+social_cohesion_and_trust,DEDICATED_TABLE,UNKNOWN,SPARSE,LOCAL,measurement_and_self_report_bias,find small_area trust mutual aid dispute resolution and cooperation measures,HIGH
+time_use_daily_life,DEDICATED_TABLE,WEAK,SPARSE,LOCAL_TO_NATIONAL,survey_burden_and_nonresponse,find time_use diaries and high_frequency local proxies,HIGH
+infrastructure_resilience,DEDICATED_TABLE,WEAK,SPARSE,LOCAL,incident_reporting_bias,link asset failure outage repair duration and repair actor,HIGH
+knowledge_transmission,DEDICATED_TABLE,UNKNOWN,SPARSE,LOCAL,informal_skill_visibility,measure apprenticeships mentoring and practitioner continuity,HIGH
+exit_voice,DEDICATED_TABLE,UNKNOWN,SPARSE,LOCAL,unobserved barriers and selective participation,measure relocation options participation complaints switching and business exit,HIGH
+administrative_friction,DEDICATED_TABLE,WEAK,SPARSE,LOCAL,processes hidden from administrative datasets,measure elapsed time forms visits fees repetition and unofficial payments,HIGH
+sleep_noise_environmental_stress,DEDICATED_TABLE,WEAK,SPARSE,LOCAL,coverage and sensor bias,link noise light sleep disruption heat pollution and daily functioning,HIGH
+care_economy,DEDICATED_TABLE,WEAK,SPARSE,LOCAL_TO_NATIONAL,informal unpaid care hidden,measure formal and informal care hours recipients capacity and cost,HIGH
+body_state,DEDICATED_TABLE,UNKNOWN,SPARSE,LOCAL_TO_NATIONAL,clinical sampling and age structure bias,find anthropometry mobility dental chronic pain and physical-function series,HIGH
+local_price_levels,DEDICATED_TABLE,WEAK,SPARSE,LOCAL,shopping basket definition and store selection,build comparable town-level basic baskets and real purchasing power,HIGH
+repair_maintenance_ecosystem,DEDICATED_TABLE,UNKNOWN,SPARSE,LOCAL,informal capacity hidden,inventory repair providers skills and service reach,STRONG
+waiting_times,DEDICATED_TABLE,WEAK,SPARSE,LOCAL_TO_NATIONAL,queue definition and selection bias,measure waiting across healthcare housing justice benefits permits and transport,STRONG
+intergenerational_contact,DEDICATED_TABLE,UNKNOWN,SPARSE,LOCAL,proximity not contact confusion,measure co-residence neighbourhood contact and shared institutions,STRONG
+local_market_concentration,DEDICATED_TABLE,PARTIAL,SPARSE,LOCAL,registered vs operating presence,measure active provider choice and concentration by essential market,STRONG
+disaster_memory_preparedness,DEDICATED_TABLE,UNKNOWN,SPARSE,LOCAL,plans vs lived preparedness confusion,link prior shocks drills household preparation and institutional memory,STRONG
+geography_crosswalks,DEDICATED_TABLE,PARTIAL,MIXED,SMALL_AREA,boundary change and crosswalk error,build versioned native geography IDs and auditable transformations,HIGH
+contradictions,DEDICATED_TABLE,PARTIAL,MIXED,MIXED,forced resolution and source incomparability,retain both observations and record definitional temporal geographic and methodological explanations,HIGH
+null_results,DEDICATED_TABLE,UNKNOWN,MIXED,MIXED,research scope and search coverage bias,record reproducible non-findings with scope sources limitations and expiry,STRONG
