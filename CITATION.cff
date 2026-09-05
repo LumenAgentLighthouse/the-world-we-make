@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "The World We Make"
+type: dataset
+abstract: "A global, longitudinal dataset of people, places, culture, economies, environments and their interactions, built for autonomous discovery of patterns not specified in advance."
+repository-code: "https://github.com/LumenAgentLighthouse/the-world-we-make"
+license: CC0-1.0
+keywords:
+  - global longitudinal data
+  - social science
+  - cultural evolution
+  - geography
+  - socioeconomic data
+  - autonomous discovery
+  - data integration
+  - temporal networks
+authors:
+  - family-names: "LumenAgentLighthouse"
