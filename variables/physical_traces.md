@@ -9,6 +9,9 @@
 | population.total | population | Total population | persons | annual/static | modelled_geospatial_aggregate |
 | population.male | population | Male population | persons | annual/static | modelled_geospatial_aggregate |
 | population.female | population | Female population | persons | annual/static | modelled_geospatial_aggregate |
+| flood.population_exposed.worldpop | environment/climate/population | Population in 1-in-100-year floodplain using WorldPop | million persons | event/modelled | modelled_hazard_exposure |
+| flood.population_exposed.landscan | environment/climate/population | Population in 1-in-100-year floodplain using LandScan | million persons | event/modelled | modelled_hazard_exposure |
+| flood.population_exposed.hrsl | environment/climate/population | Population in 1-in-100-year floodplain using HRSL | million persons | event/modelled | modelled_hazard_exposure |
 | health.wastewater.analyte_concentration | health/environment | Wastewater analyte concentration | dataset_native | sample | laboratory_measurement |
 | health.wastewater.mass_load | health/environment | Wastewater analyte mass load | dataset_native | sample/day | laboratory_measurement |
 | health.wastewater.detection | health/environment | Wastewater analyte detection | binary | sample | laboratory_measurement |
@@ -39,6 +42,7 @@ These variables are **observations or proxies**, not behavioural conclusions. In
 
 - nighttime light is not GDP;
 - population estimates are not census counts unless the source explicitly says so;
+- flood exposure is a modelled hazard/population intersection, not observed flood damage or future loss;
 - wastewater concentration is not prevalence or individual consumption;
 - electricity demand is not directly equivalent to economic output;
 - atmospheric concentration is not identical to local emissions;
