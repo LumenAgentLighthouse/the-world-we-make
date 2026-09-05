@@ -1,0 +1,6 @@
+place_id,year,variable_id,value,unit,evidence_type,source_id,confidence,caveat
+EUROPE_115_CITIES,2025,physical.wastewater.benzoylecgonine_load_change_vs_previous_year,22,percent_change,MEASURED_WASTEWATER_AGGREGATE,src_euda_score_wastewater_2025,high,Overall change from 2024 to 2025 across European cities with comparable data; benzoylecgonine is a cocaine metabolite; this is not prevalence or individual consumption
+EUROPE_115_CITIES,2025,physical.wastewater.cities_sampled,115,cities,MEASURED_WASTEWATER_AGGREGATE,src_euda_score_wastewater_2025,high,Annual SCORE wastewater sampling locations in the 2025 study
+EUROPE_85_CITIES,2025,physical.wastewater.cocaine_metabolite_cities_increasing,48,cities,MEASURED_WASTEWATER_AGGREGATE,src_euda_score_wastewater_2025,high,Among 85 cities with data for both 2024 and 2025, 48 reported an increase in benzoylecgonine loads
+EUROPE_85_CITIES,2025,physical.wastewater.cocaine_metabolite_cities_stable,21,cities,MEASURED_WASTEWATER_AGGREGATE,src_euda_score_wastewater_2025,high,Among 85 cities with data for both 2024 and 2025, 21 reported no change
+EUROPE_85_CITIES,2025,physical.wastewater.cocaine_metabolite_cities_decreasing,16,cities,MEASURED_WASTEWATER_AGGREGATE,src_euda_score_wastewater_2025,high,Among 85 cities with data for both 2024 and 2025, 16 reported a decrease
