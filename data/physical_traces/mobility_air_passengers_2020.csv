@@ -1,0 +1,2 @@
+place_id,year,variable_id,value,unit,evidence_type,source_id,confidence,caveat
+USA,2020,physical.mobility.air_passengers_carried,369501000,passengers,WORLD_BANK_ICAO,high,Domestic and international passengers carried by air carriers registered in the country; not airport throughput
