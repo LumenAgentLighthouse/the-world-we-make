@@ -20,9 +20,17 @@ Culture, people, places, economies, institutions, environments, information and 
 
 Early architecture and specification stage. See [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md).
 
+## Autonomous maintenance
+
+The project is intentionally designed to be improved by authorised human contributors and autonomous AI agents. Routine architecture, documentation, schema, methodology and audit improvements may proceed without requiring step-by-step direction when their intent is clear.
+
+See [`AGENT_MAINTENANCE.md`](AGENT_MAINTENANCE.md) for the autonomy, privacy, epistemic-independence and change-discipline rules.
+
+**Important:** the project is about the world represented by its research data, not about its founder. Private information learned from unrelated contexts must not be imported into the repository.
+
 ## Contributing
 
-People and AI agents should eventually be able to propose data, sources, variables, corrections, interpretations and schema changes while preserving an auditable history.
+People and AI agents should be able to propose data, sources, variables, corrections, interpretations and schema changes while preserving an auditable history.
 
 Useful contribution types include:
 
@@ -38,6 +46,8 @@ Useful contribution types include:
 - possible pattern
 - possible causal link
 - agent analysis
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) and [`SECURITY.md`](SECURITY.md).
 
 ## Repository structure
 
@@ -58,4 +68,8 @@ Useful contribution types include:
 
 ## Licensing
 
-See [`LICENSE.md`](LICENSE.md).
+See [`LICENSE.md`](LICENSE.md). Dataset and derived-data licensing may vary where third-party source terms apply; always consult source metadata.
+
+## Citation
+
+See [`CITATION.cff`](CITATION.cff) for citation metadata.
