@@ -1,0 +1,23 @@
+observation_id,place_id,time_id,variable_id,value_numeric,value_text,unit,category,sub_category,evidence_type,source_id,confidence,status,missing_reason,caveat,notes
+owid25_usa_unemp,USA,2025,UNEMPLOYMENT_RATE,4.2,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid25_afg_unemp,AFG,2025,UNEMPLOYMENT_RATE,13,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid25_geo_unemp,GEO,2025,UNEMPLOYMENT_RATE,12,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid25_lca_unemp,LCA,2025,UNEMPLOYMENT_RATE,9.5,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid25_bhs_unemp,BHS,2025,UNEMPLOYMENT_RATE,9.2,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid25_fji_unemp,FJI,2025,UNEMPLOYMENT_RATE,5.3,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid25_mng_unemp,MNG,2025,UNEMPLOYMENT_RATE,5.2,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid25_omn_unemp,OMN,2025,UNEMPLOYMENT_RATE,3.3,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid25_civ_unemp,CIV,2025,UNEMPLOYMENT_RATE,2.3,,percent,economy,labour,modeled_estimate,OWID_ILO_WB_2025,HIGH,KNOWN,,,ILO modeled estimate via World Bank processed by Our World in Data
+owid24_afg_elec,AFG,2024,ELECTRICITY_ACCESS_SHARE,88,,percent,power,infrastructure,compiled_estimate,OWID_WB_ELECTRICITY_2024,HIGH,KNOWN,,,World Bank electricity access dataset via Our World in Data
+owid24_mng_elec,MNG,2024,ELECTRICITY_ACCESS_SHARE,100,,percent,power,infrastructure,compiled_estimate,OWID_WB_ELECTRICITY_2024,HIGH,KNOWN,,,World Bank electricity access dataset via Our World in Data
+owid24_fji_elec,FJI,2024,ELECTRICITY_ACCESS_SHARE,96,,percent,power,infrastructure,compiled_estimate,OWID_WB_ELECTRICITY_2024,HIGH,KNOWN,,,World Bank electricity access dataset via Our World in Data
+owid24_geo_elec,GEO,2024,ELECTRICITY_ACCESS_SHARE,100,,percent,power,infrastructure,compiled_estimate,OWID_WB_ELECTRICITY_2024,HIGH,KNOWN,,,World Bank electricity access dataset via Our World in Data
+owid24_lca_elec,LCA,2024,ELECTRICITY_ACCESS_SHARE,100,,percent,power,infrastructure,compiled_estimate,OWID_WB_ELECTRICITY_2024,HIGH,KNOWN,,,World Bank electricity access dataset via Our World in Data
+owid24_civ_elec,CIV,2024,ELECTRICITY_ACCESS_SHARE,73,,percent,power,infrastructure,compiled_estimate,OWID_WB_ELECTRICITY_2024,HIGH,KNOWN,,,World Bank electricity access dataset via Our World in Data
+owid24_usa_broadband,USA,2024,FIXED_BROADBAND_SUBSCRIPTIONS,134000000,,subscriptions,technology,internet,reported,OWID_ITW_2024,HIGH,KNOWN,,,Fixed broadband subscriptions; source notes nearest-year substitution where 2024 unavailable
+owid24_geo_broadband,GEO,2024,FIXED_BROADBAND_SUBSCRIPTIONS_PER_100,30.4,,subscriptions_per_100,technology,internet,reported,OWID_ITW_2024,HIGH,KNOWN,,,Fixed broadband subscriptions per 100 people
+owid24_bhs_broadband,BHS,2024,FIXED_BROADBAND_SUBSCRIPTIONS_PER_100,25.3,,subscriptions_per_100,technology,internet,reported,OWID_ITW_2024,HIGH,KNOWN,,,Fixed broadband subscriptions per 100 people
+owid24_mng_broadband,MNG,2024,FIXED_BROADBAND_SUBSCRIPTIONS_PER_100,15.8,,subscriptions_per_100,technology,internet,reported,OWID_ITW_2024,HIGH,KNOWN,,,Fixed broadband subscriptions per 100 people
+owid24_lca_broadband,LCA,2024,FIXED_BROADBAND_SUBSCRIPTIONS_PER_100,13.6,,subscriptions_per_100,technology,internet,reported,OWID_ITW_2024,HIGH,KNOWN,,,Fixed broadband subscriptions per 100 people
+owid24_fji_broadband,FJI,2024,FIXED_BROADBAND_SUBSCRIPTIONS_PER_100,1.8,,subscriptions_per_100,technology,internet,reported,OWID_ITW_2024,HIGH,KNOWN,,,Fixed broadband subscriptions per 100 people
+owid24_civ_broadband,CIV,2024,FIXED_BROADBAND_SUBSCRIPTIONS_PER_100,1.6,,subscriptions_per_100,technology,internet,reported,OWID_ITW_2024,HIGH,KNOWN,,,Fixed broadband subscriptions per 100 people
