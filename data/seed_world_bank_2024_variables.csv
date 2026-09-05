@@ -1,0 +1,4 @@
+variable_id,domain,variable_name,definition,unit,preferred_frequency,sensitivity,causal_role,known_confounders,notes
+POP_TOTAL,population,Population total,Total population of the reporting country or economy,persons,annual,low,context,age structure migration boundary changes,Do not substitute households or resident population under a different definition
+GDP_PC_CURRENT_USD,economy,GDP per capita current US dollars,Gross domestic product divided by population at current US dollar values,USD_per_person,annual,low,context,exchange rates price levels population revisions,Nominal monetary measure not a welfare measure
+LIFE_EXPECTANCY,health,Life expectancy at birth total,Expected years a newborn would live under prevailing age-specific mortality rates,years,annual,low,outcome,age structure mortality patterns data revisions,Do not interpret as individual lifespan or a direct healthcare quality score
