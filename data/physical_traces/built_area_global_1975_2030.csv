@@ -1,0 +1,13 @@
+place_id,year,variable_id,value,unit,evidence_type,source_id,confidence,caveat
+WLD,1975,physical.built_area.total,173579688013,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,1980,physical.built_area.total,194287591836,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,1985,physical.built_area.total,220083865086,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,1990,physical.built_area.total,249833100538,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,1995,physical.built_area.total,280112957342,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,2000,physical.built_area.total,315676641605,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,2005,physical.built_area.total,345785691160,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,2010,physical.built_area.total,382248138896,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,2015,physical.built_area.total,422815687372,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,2020,physical.built_area.total,464586276041,m2,REMOTE_SENSING_DERIVED,src_jrc_ghsl_r2023a_built_s,high,Global GHSL predicted built-up surface; total built-up surface, not building floor area
+WLD,2025,physical.built_area.total,491637335418,m2,MODELLED_PROJECTION,src_jrc_ghsl_r2023a_built_s,high,Projected/extrapolated epoch; do not treat as observed remote sensing measurement
+WLD,2030,physical.built_area.total,509277184552,m2,MODELLED_PROJECTION,src_jrc_ghsl_r2023a_built_s,high,Projected/extrapolated epoch; do not treat as observed remote sensing measurement
