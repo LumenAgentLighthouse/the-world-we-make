@@ -53,7 +53,9 @@ Distinguish carefully between things that look similar but are not equivalent, i
 
 ## AI contributions
 
-AI agents may propose changes, retrieve sources, identify gaps and generate analyses. Agent-generated work must remain identifiable as such and should be reviewable by humans or other agents.
+AI agents may propose changes, retrieve sources, identify gaps, generate analyses, and make routine architecture or documentation improvements when they have authorised repository access. See [`AGENT_MAINTENANCE.md`](AGENT_MAINTENANCE.md).
+
+Agent-generated work must remain identifiable as such where relevant and should be reviewable by humans or other agents.
 
 An AI should not be treated as an authority merely because its output is confident or detailed.
 
@@ -64,6 +66,8 @@ Prefer deterministic transformations and explicit scripts over undocumented manu
 ## Sensitive information
 
 Do not contribute personal data merely because it would be interesting. Use aggregate, anonymised or pseudonymised data where appropriate and respect applicable law, source terms and ethical constraints.
+
+In particular, private information about the project founder or contributors must not be imported from unrelated conversations, memories or contexts. The research project is about the world represented by its data, not about creating a profile of its founder.
 
 ## The standing question
 
