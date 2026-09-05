@@ -1,0 +1,10 @@
+place_id,country,place_name,place_type,notes
+AFG,Afghanistan,Afghanistan,country,ISO-like project code
+MNG,Mongolia,Mongolia,country,ISO-like project code
+FJI,Fiji,Fiji,country,ISO-like project code
+USA,United States,United States,country,ISO-like project code
+GEO,Georgia,Georgia,country,ISO-like project code
+LCA,Saint Lucia,Saint Lucia,country,ISO-like project code
+OMN,Oman,Oman,country,ISO-like project code
+BHS,Bahamas,Bahamas,country,ISO-like project code
+CIV,Cote d'Ivoire,Cote d'Ivoire,country,ISO-like project code
