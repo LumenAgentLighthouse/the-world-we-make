@@ -1,0 +1,107 @@
+observation_id,place_id,time_id,variable_id,value_numeric,value_text,unit,category,sub_category,evidence_type,source_id,confidence,status,missing_reason,caveat,notes
+conn24_afg_internet,AFG,2024,INTERNET_USER_SHARE,16,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_mng_internet,MNG,2024,INTERNET_USER_SHARE,85,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_fji_internet,FJI,2024,INTERNET_USER_SHARE,75,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_usa_internet,USA,2024,INTERNET_USER_SHARE,95,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_geo_internet,GEO,2024,INTERNET_USER_SHARE,84,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_lca_internet,LCA,2024,INTERNET_USER_SHARE,68,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_omn_internet,OMN,2024,INTERNET_USER_SHARE,95,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_bhs_internet,BHS,2024,INTERNET_USER_SHARE,92,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_civ_internet,CIV,2024,INTERNET_USER_SHARE,41,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_bra_internet,BRA,2024,INTERNET_USER_SHARE,84,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_can_internet,CAN,2024,INTERNET_USER_SHARE,94,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn25_chn_internet,CHN,2025,INTERNET_USER_SHARE,92,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Most recent World Bank/ITU observation is 2025
+conn24_deu_internet,DEU,2024,INTERNET_USER_SHARE,93,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_fra_internet,FRA,2024,INTERNET_USER_SHARE,89,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_gbr_internet,GBR,2024,INTERNET_USER_SHARE,95,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn25_ind_internet,IND,2025,INTERNET_USER_SHARE,70,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Most recent World Bank/ITU observation is 2025
+conn24_idn_internet,IDN,2024,INTERNET_USER_SHARE,73,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_jpn_internet,JPN,2024,INTERNET_USER_SHARE,86,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_kor_internet,KOR,2024,INTERNET_USER_SHARE,98,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_mex_internet,MEX,2024,INTERNET_USER_SHARE,83,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_nga_internet,NGA,2024,INTERNET_USER_SHARE,41,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_pak_internet,PAK,2024,INTERNET_USER_SHARE,57,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_zaf_internet,ZAF,2024,INTERNET_USER_SHARE,78,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_eth_internet,ETH,2024,INTERNET_USER_SHARE,22,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_egy_internet,EGY,2024,INTERNET_USER_SHARE,75,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_bgd_internet,BGD,2024,INTERNET_USER_SHARE,53,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_vnm_internet,VNM,2024,INTERNET_USER_SHARE,84,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_tha_internet,THA,2024,INTERNET_USER_SHARE,91,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_phl_internet,PHL,2024,INTERNET_USER_SHARE,67,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_mys_internet,MYS,2024,INTERNET_USER_SHARE,98,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn25_aut_internet,AUT,2025,INTERNET_USER_SHARE,92,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Most recent World Bank/ITU observation is 2025
+conn24_bel_internet,BEL,2024,INTERNET_USER_SHARE,96,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_col_internet,COL,2024,INTERNET_USER_SHARE,79,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_dnk_internet,DNK,2024,INTERNET_USER_SHARE,100,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_fin_internet,FIN,2024,INTERNET_USER_SHARE,94,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_grc_internet,GRC,2024,INTERNET_USER_SHARE,86,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_hun_internet,HUN,2024,INTERNET_USER_SHARE,94,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_irl_internet,IRL,2024,INTERNET_USER_SHARE,97,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_isr_internet,ISR,2024,INTERNET_USER_SHARE,88,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_ita_internet,ITA,2024,INTERNET_USER_SHARE,89,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_nld_internet,NLD,2024,INTERNET_USER_SHARE,97,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_pol_internet,POL,2024,INTERNET_USER_SHARE,89,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_prt_internet,PRT,2024,INTERNET_USER_SHARE,88,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_sau_internet,SAU,2024,INTERNET_USER_SHARE,100,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_esp_internet,ESP,2024,INTERNET_USER_SHARE,96,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn25_swe_internet,SWE,2025,INTERNET_USER_SHARE,96,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Most recent World Bank/ITU observation is 2025
+conn25_che_internet,CHE,2025,INTERNET_USER_SHARE,97,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Most recent World Bank/ITU observation is 2025
+conn25_tur_internet,TUR,2025,INTERNET_USER_SHARE,90,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Most recent World Bank/ITU observation is 2025
+conn24_are_internet,ARE,2024,INTERNET_USER_SHARE,100,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_nzl_internet,NZL,2024,INTERNET_USER_SHARE,94,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_zwe_internet,ZWE,2024,INTERNET_USER_SHARE,42,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_rus_internet,RUS,2024,INTERNET_USER_SHARE,94,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+conn24_aus_internet,AUS,2024,INTERNET_USER_SHARE,96,,percent,technology,connectivity,reported,WB_ITU_INTERNET_2024,HIGH,KNOWN,,,Individuals using the Internet as share of population
+ren24_afg_renew,AFG,2024,RENEWABLE_ELECTRICITY_SHARE,86.87,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_mng_renew,MNG,2024,RENEWABLE_ELECTRICITY_SHARE,8.84,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_fji_renew,FJI,2024,RENEWABLE_ELECTRICITY_SHARE,63.48,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_usa_renew,USA,2024,RENEWABLE_ELECTRICITY_SHARE,24.06,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_geo_renew,GEO,2024,RENEWABLE_ELECTRICITY_SHARE,79.83,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_lca_renew,LCA,2024,RENEWABLE_ELECTRICITY_SHARE,2.5,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_omn_renew,OMN,2024,RENEWABLE_ELECTRICITY_SHARE,4.89,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_bhs_renew,BHS,2024,RENEWABLE_ELECTRICITY_SHARE,0.89,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_civ_renew,CIV,2024,RENEWABLE_ELECTRICITY_SHARE,28.92,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_bra_renew,BRA,2024,RENEWABLE_ELECTRICITY_SHARE,87.33,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_can_renew,CAN,2024,RENEWABLE_ELECTRICITY_SHARE,64.27,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_chn_renew,CHN,2024,RENEWABLE_ELECTRICITY_SHARE,33.7,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_deu_renew,DEU,2024,RENEWABLE_ELECTRICITY_SHARE,58.64,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_fra_renew,FRA,2024,RENEWABLE_ELECTRICITY_SHARE,27.18,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_gbr_renew,GBR,2024,RENEWABLE_ELECTRICITY_SHARE,50.65,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_ind_renew,IND,2024,RENEWABLE_ELECTRICITY_SHARE,19.81,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_idn_renew,IDN,2024,RENEWABLE_ELECTRICITY_SHARE,18.09,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_jpn_renew,JPN,2024,RENEWABLE_ELECTRICITY_SHARE,22.94,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_kor_renew,KOR,2024,RENEWABLE_ELECTRICITY_SHARE,9.71,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_mex_renew,MEX,2024,RENEWABLE_ELECTRICITY_SHARE,21.12,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_nga_renew,NGA,2024,RENEWABLE_ELECTRICITY_SHARE,25,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_pak_renew,PAK,2024,RENEWABLE_ELECTRICITY_SHARE,37.2,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_zaf_renew,ZAF,2024,RENEWABLE_ELECTRICITY_SHARE,12.51,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_eth_renew,ETH,2024,RENEWABLE_ELECTRICITY_SHARE,100,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_egy_renew,EGY,2024,RENEWABLE_ELECTRICITY_SHARE,11.2,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_bgd_renew,BGD,2024,RENEWABLE_ELECTRICITY_SHARE,1.89,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_vnm_renew,VNM,2024,RENEWABLE_ELECTRICITY_SHARE,42.28,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_tha_renew,THA,2024,RENEWABLE_ELECTRICITY_SHARE,14.84,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_phl_renew,PHL,2024,RENEWABLE_ELECTRICITY_SHARE,20.47,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_mys_renew,MYS,2024,RENEWABLE_ELECTRICITY_SHARE,20.37,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_aut_renew,AUT,2024,RENEWABLE_ELECTRICITY_SHARE,86.22,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_bel_renew,BEL,2024,RENEWABLE_ELECTRICITY_SHARE,35.23,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_col_renew,COL,2024,RENEWABLE_ELECTRICITY_SHARE,61.34,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_dnk_renew,DNK,2024,RENEWABLE_ELECTRICITY_SHARE,89.19,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_fin_renew,FIN,2024,RENEWABLE_ELECTRICITY_SHARE,55.86,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_grc_renew,GRC,2024,RENEWABLE_ELECTRICITY_SHARE,49.23,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_hun_renew,HUN,2024,RENEWABLE_ELECTRICITY_SHARE,31.47,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_irl_renew,IRL,2024,RENEWABLE_ELECTRICITY_SHARE,46.53,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_isr_renew,ISR,2024,RENEWABLE_ELECTRICITY_SHARE,13.81,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_ita_renew,ITA,2024,RENEWABLE_ELECTRICITY_SHARE,50.17,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_nld_renew,NLD,2024,RENEWABLE_ELECTRICITY_SHARE,50.74,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_pol_renew,POL,2024,RENEWABLE_ELECTRICITY_SHARE,31.15,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_prt_renew,PRT,2024,RENEWABLE_ELECTRICITY_SHARE,85.19,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_sau_renew,SAU,2024,RENEWABLE_ELECTRICITY_SHARE,2.16,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_esp_renew,ESP,2024,RENEWABLE_ELECTRICITY_SHARE,57.34,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_swe_renew,SWE,2024,RENEWABLE_ELECTRICITY_SHARE,69.36,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_che_renew,CHE,2024,RENEWABLE_ELECTRICITY_SHARE,67.45,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_tur_renew,TUR,2024,RENEWABLE_ELECTRICITY_SHARE,45.61,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_are_renew,ARE,2024,RENEWABLE_ELECTRICITY_SHARE,8.81,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_nzl_renew,NZL,2024,RENEWABLE_ELECTRICITY_SHARE,85.98,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_zwe_renew,ZWE,2024,RENEWABLE_ELECTRICITY_SHARE,57.12,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_rus_renew,RUS,2024,RENEWABLE_ELECTRICITY_SHARE,18.1,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
+ren24_aus_renew,AUS,2024,RENEWABLE_ELECTRICITY_SHARE,35.08,,percent,environment,electricity,compiled_estimate,OWID_EMBER_RENEWABLES_2024,HIGH,KNOWN,,,Share of electricity generation from renewables
