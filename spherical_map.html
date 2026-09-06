@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The World We Make — Spherical Lens</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#0a0e17;color:#e0e6ed;overflow:hidden}
+#canvas-container{width:100vw;height:100vh;position:fixed;top:0;left:0}
+.sidebar{position:absolute;top:10px;left:10px;width:330px;max-height:calc(100vh - 20px);padding:16px;overflow-y:auto;background:rgba(15,20,30,.95);border:1px solid #2a3a4a;border-radius:8px;z-index:1000;backdrop-filter:blur(10px)}
+.sidebar h2{color:#4fc3f7;font-size:16px;margin-bottom:8px;border-bottom:1px solid #2a3a4a;padding-bottom:8px}
+.sidebar .subtitle{color:#8899aa;font-size:11px;margin-bottom:12px;font-style:italic}
+.sidebar label{display:block;font-size:12px;color:#8899aa;margin-top:10px;margin-bottom:4px}
+.sidebar select,.sidebar input{width:100%;padding:6px;background:#1a2535;border:1px solid #2a3a4a;border-radius:4px;color:#e0e6ed;font-size:13px;margin-bottom:4px}
+.sidebar button{width:100%;padding:8px;background:#1565c0;border:none;border-radius:4px;color:white;font-size:13px;cursor:pointer;margin-top:6px}
+.sidebar button:hover{background:#1976d2}
+.sidebar button.reset{background:#c62828}
+.sidebar button.reset:hover{background:#d32f2f}
+.stats{margin-top:12px;padding:8px;background:#1a2535;border-radius:4px;font-size:12px}
+.stats div{margin:2px 0}
+.stats .val{color:#4fc3f7;font-weight:bold}
+.status{margin-top:8px;padding:7px;border-radius:4px;background:#17202c;font-size:11px;color:#aebbc8}
+.status.ok{border-left:3px solid #43a047}
+.status.warn{border-left:3px solid #ffb74d}
+.events-panel{position:absolute;top:55px;right:10px;padding:12px;max-width:300px;max-height:350px;overflow-y:auto;background:rgba(15,20,30,.95);border:1px solid #2a3a4a;border-radius:8px;z-index:1000;backdrop-filter:blur(10px)}
+.events-panel h3{font-size:12px;color:#4fc3f7;margin-bottom:8px}
+.event-item{padding:4px 0;border-bottom:1px solid #1a2535;font-size:11px}
+.event-item .year{color:#ffb74d;font-weight:bold}
+.event-item .text{color:#c0c8d0}
+.legend{position:absolute;bottom:80px;right:10px;padding:12px;background:rgba(15,20,30,.95);border:1px solid #2a3a4a;border-radius:8px;z-index:1000;backdrop-filter:blur(10px)}
+.legend h3{font-size:12px;color:#4fc3f7;margin-bottom:8px}
+.legend-item{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.timeline-container{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);padding:12px 20px;display:flex;align-items:center;gap:15px;background:rgba(15,20,30,.95);border:1px solid #2a3a4a;border-radius:8px;z-index:1000;backdrop-filter:blur(10px)}
+.timeline-container label{font-size:12px;color:#8899aa;white-space:nowrap}
+.timeline-container input{width:300px;accent-color:#4fc3f7}
+.timeline-container span{font-size:14px;color:#4fc3f7;font-weight:bold;min-width:40px}
+.tooltip{position:absolute;background:rgba(15,20,30,.95);border:1px solid #4fc3f7;border-radius:6px;padding:10px;z-index:2000;font-size:12px;pointer-events:none;max-width:280px;display:none}
+.tooltip h4{color:#4fc3f7;margin-bottom:4px}
+.tooltip .row{margin:2px 0}
+.tooltip .label{color:#8899aa}
+.tooltip .value{color:#e0e6ed}
+.info-bar{position:absolute;top:10px;left:50%;transform:translateX(-50%);padding:6px 16px;background:rgba(15,20,30,.85);border:1px solid #2a3a4a;border-radius:8px;z-index:1000;font-size:11px;color:#8899aa;backdrop-filter:blur(10px);text-align:center;white-space:nowrap}
+.info-bar span{color:#4fc3f7}
+</style>
+</head>
+<body>
+<div id="canvas-container"></div>
+
+<div class="info-bar">Observer at centre — <span>drag to look</span> · <span>scroll to zoom</span> · <span>equator is fixed reference ring</span></div>
+
+<div class="sidebar">
+<h2>🌍 The World We Make — Spherical Lens</h2>
+<div class="subtitle">You stand at the centre of the Earth. The surface curves outward around you.</div>
+<label>Domain / Category:</label>
+<select id="domainSelect"><option value="all">All Domains</option></select>
+<label>Variable:</label>
+<select id="variableSelect"><option value="all">All Variables</option></select>
+<label>Place:</label>
+<select id="placeSelect"><option value="all">All Places</option></select>
+<label>View Mode:</label>
+<select id="vizMode">
+<option value="observations">Observations</option>
+<option value="origins">Coverage / Origins</option>
+<option value="spread">Temporal Spread</option>
+<option value="both">Coverage + Change</option>
+</select>
+<button id="animateBtn">▶ Animate Time</button>
+<button id="resetBtn" class="reset">⟲ Reset View</button>
+<div class="stats">
+<div>Variables loaded: <span class="val" id="varCount">—</span></div>
+<div>Places: <span class="val" id="placeCount">—</span></div>
+<div>Observations: <span class="val" id="obsCount">—</span></div>
+<div>Time range: <span class="val" id="timeRange">—</span></div>
+</div>
+<div id="status" class="status ok">Spherical lens initialized</div>
+</div>
+
+<div class="events-panel"><h3>📅 Evolution Events</h3><div id="eventsList"></div></div>
+
+<div class="legend"><h3>Legend</h3><div id="legendItems"></div></div>
+
+<div class="timeline-container">
+<label>Year:</label>
+<input type="range" id="yearSlider" min="1900" max="2026" value="2024" step="1">
+<span id="yearDisplay">2024</span>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/topojson@3"></script>
+<script>
+/* ========== DATA ========== */
+const PLACES = [
+{place_id:"AFG",country:"Afghanistan",lat:33.93911,lng:67.70995},
+{place_id:"MNG",country:"Mongolia",lat:46.8625,lng:103.84666},
+{place_id:"FJI",country:"Fiji",lat:-17.71338,lng:178.06503},
+{place_id:"USA",country:"United States",lat:37.09024,lng:-95.71289},
+{place_id:"GEO",country:"Georgia",lat:42.3154,lng:43.35689},
+{place_id:"LCA",country:"Saint Lucia",lat:13.9,lng:-60.98333},
+{place_id:"OMN",country:"Oman",lat:21.4735,lng:55.9754},
+{place_id:"BHS",country:"Bahamas",lat:25.0343,lng:-77.3963},
+{place_id:"CIV",country:"Cote d'Ivoire",lat:7.54,lng:-5.5471},
+{place_id:"BRA",country:"Brazil",lat:-14.235,lng:-51.92528},
+{place_id:"CAN",country:"Canada",lat:56.13036,lng:-106.34677},
+{place_id:"CHN",country:"China",lat:35.86166,lng:104.1954},
+{place_id:"DEU",country:"Germany",lat:51.16569,lng:10.45152},
+{place_id:"FRA",country:"France",lat:46.22764,lng:2.21374},
+{place_id:"GBR",country:"United Kingdom",lat:55.37805,lng:-3.43597},
+{place_id:"IND",country:"India",lat:20.59368,lng:78.96288},
+{place_id:"IDN",country:"Indonesia",lat:-0.78928,lng:113.92133},
+{place_id:"JPN",country:"Japan",lat:36.20482,lng:138.25292},
+{place_id:"KOR",country:"South Korea",lat:35.90776,lng:127.76692},
+{place_id:"MEX",country:"Mexico",lat:23.6345,lng:-102.5528},
+{place_id:"NGA",country:"Nigeria",lat:9.082,lng:8.6753},
+{place_id:"PAK",country:"Pakistan",lat:30.37532,lng:69.34512},
+{place_id:"ZAF",country:"South Africa",lat:-30.55948,lng:22.93751},
+{place_id:"ETH",country:"Ethiopia",lat:9.145,lng:40.48967},
+{place_id:"EGY",country:"Egypt",lat:26.82055,lng:30.8025},
+{place_id:"BGD",country:"Bangladesh",lat:23.685,lng:90.35633},
+{place_id:"VNM",country:"Vietnam",lat:14.05832,lng:108.2772},
+{place_id:"THA",country:"Thailand",lat:15.87003,lng:100.99254},
+{place_id:"PHL",country:"Philippines",lat:12.87972,lng:121.77402},
+{place_id:"MYS",country:"Malaysia",lat:4.2105,lng:101.97577},
+{place_id:"AUT",country:"Austria",lat:47.51623,lng:14.55007},
+{place_id:"BEL",country:"Belgium",lat:50.50389,lng:4.46994},
+{place_id:"COL",country:"Colombia",lat:4.57087,lng:-74.29733},
+{place_id:"DNK",country:"Denmark",lat:56.26392,lng:9.50179},
+{place_id:"FIN",country:"Finland",lat:61.92411,lng:25.74815},
+{place_id:"GRC",country:"Greece",lat:39.07421,lng:21.82431},
+{place_id:"HUN",country:"Hungary",lat:47.16249,lng:19.5033},
+{place_id:"IRL",country:"Ireland",lat:53.41291,lng:-8.24389},
+{place_id:"ISR",country:"Israel",lat:31.04605,lng:34.85161},
+{place_id:"ITA",country:"Italy",lat:41.87194,lng:12.56738},
+{place_id:"NLD",country:"Netherlands",lat:52.13263,lng:5.29127},
+{place_id:"POL",country:"Poland",lat:51.91944,lng:19.14514},
+{place_id:"PRT",country:"Portugal",lat:39.39987,lng:-8.22445},
+{place_id:"SAU",country:"Saudi Arabia",lat:23.88594,lng:45.07916},
+{place_id:"ESP",country:"Spain",lat:40.46367,lng:-3.74922},
+{place_id:"SWE",country:"Sweden",lat:60.12816,lng:18.6435},
+{place_id:"CHE",country:"Switzerland",lat:46.81819,lng:8.22751},
+{place_id:"TUR",country:"Turkey",lat:38.96375,lng:35.24332},
+{place_id:"ARE",country:"United Arab Emirates",lat:23.42408,lng:53.84782},
+{place_id:"NZL",country:"New Zealand",lat:-40.90056,lng:174.88597},
+{place_id:"ZWE",country:"Zimbabwe",lat:-19.01544,lng:29.15486},
+{place_id:"RUS",country:"Russia",lat:61.52401,lng:105.31876},
+{place_id:"AUS",country:"Australia",lat:-25.2744,lng:133.77514}
+];
+
+const OBSERVATIONS = [
+{obs_id:"conn24_afg",place_id:"AFG",year:2024,variable_id:"INTERNET_USER_SHARE",value:16,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_mng",place_id:"MNG",year:2024,variable_id:"INTERNET_USER_SHARE",value:85,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_fji",place_id:"FJI",year:2024,variable_id:"INTERNET_USER_SHARE",value:75,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_usa",place_id:"USA",year:2024,variable_id:"INTERNET_USER_SHARE",value:95,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_geo",place_id:"GEO",year:2024,variable_id:"INTERNET_USER_SHARE",value:84,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_lca",place_id:"LCA",year:2024,variable_id:"INTERNET_USER_SHARE",value:68,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_omn",place_id:"OMN",year:2024,variable_id:"INTERNET_USER_SHARE",value:95,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_bhs",place_id:"BHS",year:2024,variable_id:"INTERNET_USER_SHARE",value:92,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_civ",place_id:"CIV",year:2024,variable_id:"INTERNET_USER_SHARE",value:41,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_bra",place_id:"BRA",year:2024,variable_id:"INTERNET_USER_SHARE",value:84,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_can",place_id:"CAN",year:2024,variable_id:"INTERNET_USER_SHARE",value:94,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_chn",place_id:"CHN",year:2025,variable_id:"INTERNET_USER_SHARE",value:92,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_deu",place_id:"DEU",year:2024,variable_id:"INTERNET_USER_SHARE",value:93,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_fra",place_id:"FRA",year:2024,variable_id:"INTERNET_USER_SHARE",value:89,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_gbr",place_id:"GBR",year:2024,variable_id:"INTERNET_USER_SHARE",value:95,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_ind",place_id:"IND",year:2025,variable_id:"INTERNET_USER_SHARE",value:70,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_idn",place_id:"IDN",year:2024,variable_id:"INTERNET_USER_SHARE",value:73,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_jpn",place_id:"JPN",year:2024,variable_id:"INTERNET_USER_SHARE",value:86,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_kor",place_id:"KOR",year:2024,variable_id:"INTERNET_USER_SHARE",value:98,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_mex",place_id:"MEX",year:2024,variable_id:"INTERNET_USER_SHARE",value:83,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_nga",place_id:"NGA",year:2024,variable_id:"INTERNET_USER_SHARE",value:41,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_pak",place_id:"PAK",year:2024,variable_id:"INTERNET_USER_SHARE",value:57,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_zaf",place_id:"ZAF",year:2024,variable_id:"INTERNET_USER_SHARE",value:78,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_eth",place_id:"ETH",year:2024,variable_id:"INTERNET_USER_SHARE",value:22,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_egy",place_id:"EGY",year:2024,variable_id:"INTERNET_USER_SHARE",value:75,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_bgd",place_id:"BGD",year:2024,variable_id:"INTERNET_USER_SHARE",value:53,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_vnm",place_id:"VNM",year:2024,variable_id:"INTERNET_USER_SHARE",value:84,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_tha",place_id:"THA",year:2024,variable_id:"INTERNET_USER_SHARE",value:91,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_phl",place_id:"PHL",year:2024,variable_id:"INTERNET_USER_SHARE",value:67,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_mys",place_id:"MYS",year:2024,variable_id:"INTERNET_USER_SHARE",value:98,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_aut",place_id:"AUT",year:2025,variable_id:"INTERNET_USER_SHARE",value:92,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_bel",place_id:"BEL",year:2024,variable_id:"INTERNET_USER_SHARE",value:96,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_col",place_id:"COL",year:2024,variable_id:"INTERNET_USER_SHARE",value:79,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_dnk",place_id:"DNK",year:2024,variable_id:"INTERNET_USER_SHARE",value:100,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_fin",place_id:"FIN",year:2024,variable_id:"INTERNET_USER_SHARE",value:94,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_grc",place_id:"GRC",year:2024,variable_id:"INTERNET_USER_SHARE",value:86,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_hun",place_id:"HUN",year:2024,variable_id:"INTERNET_USER_SHARE",value:94,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_irl",place_id:"IRL",year:2024,variable_id:"INTERNET_USER_SHARE",value:97,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_isr",place_id:"ISR",year:2024,variable_id:"INTERNET_USER_SHARE",value:88,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_ita",place_id:"ITA",year:2024,variable_id:"INTERNET_USER_SHARE",value:89,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_nld",place_id:"NLD",year:2024,variable_id:"INTERNET_USER_SHARE",value:97,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_pol",place_id:"POL",year:2024,variable_id:"INTERNET_USER_SHARE",value:89,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_prt",place_id:"PRT",year:2024,variable_id:"INTERNET_USER_SHARE",value:88,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_sau",place_id:"SAU",year:2024,variable_id:"INTERNET_USER_SHARE",value:100,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_esp",place_id:"ESP",year:2024,variable_id:"INTERNET_USER_SHARE",value:96,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_swe",place_id:"SWE",year:2025,variable_id:"INTERNET_USER_SHARE",value:96,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_che",place_id:"CHE",year:2025,variable_id:"INTERNET_USER_SHARE",value:97,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_tur",place_id:"TUR",year:2025,variable_id:"INTERNET_USER_SHARE",value:90,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_are",place_id:"ARE",year:2024,variable_id:"INTERNET_USER_SHARE",value:100,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_nzl",place_id:"NZL",year:2024,variable_id:"INTERNET_USER_SHARE",value:94,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_zwe",place_id:"ZWE",year:2024,variable_id:"INTERNET_USER_SHARE",value:42,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_rus",place_id:"RUS",year:2024,variable_id:"INTERNET_USER_SHARE",value:94,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"conn24_aus",place_id:"AUS",year:2024,variable_id:"INTERNET_USER_SHARE",value:96,unit:"percent",domain:"technology",evidence_type:"reported",source_id:"WB_ITU_INTERNET_2024",confidence:"HIGH"},
+{obs_id:"ren24_afg",place_id:"AFG",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:86.87,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_mng",place_id:"MNG",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:8.84,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_fji",place_id:"FJI",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:63.48,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_usa",place_id:"USA",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:24.06,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_geo",place_id:"GEO",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:79.83,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_lca",place_id:"LCA",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:2.5,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_omn",place_id:"OMN",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:4.89,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_bhs",place_id:"BHS",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:0.89,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_civ",place_id:"CIV",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:28.92,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_bra",place_id:"BRA",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:87.33,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_can",place_id:"CAN",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:64.27,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_chn",place_id:"CHN",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:33.7,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_deu",place_id:"DEU",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:58.64,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_fra",place_id:"FRA",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:27.18,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_gbr",place_id:"GBR",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:50.65,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_ind",place_id:"IND",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:19.81,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_idn",place_id:"IDN",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:18.09,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_jpn",place_id:"JPN",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:22.94,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_kor",place_id:"KOR",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:9.71,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_mex",place_id:"MEX",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:21.12,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_nga",place_id:"NGA",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:25,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_pak",place_id:"PAK",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:37.2,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_zaf",place_id:"ZAF",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:12.51,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_eth",place_id:"ETH",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:100,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_egy",place_id:"EGY",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:11.2,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_bgd",place_id:"BGD",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:1.89,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_vnm",place_id:"VNM",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:42.28,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_tha",place_id:"THA",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:14.84,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_phl",place_id:"PHL",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:20.47,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_mys",place_id:"MYS",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:20.37,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_aut",place_id:"AUT",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:86.22,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_bel",place_id:"BEL",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:35.23,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_col",place_id:"COL",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:61.34,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_dnk",place_id:"DNK",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:89.19,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_fin",place_id:"FIN",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:55.86,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_grc",place_id:"GRC",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:49.23,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_hun",place_id:"HUN",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:31.47,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_irl",place_id:"IRL",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:46.53,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_isr",place_id:"ISR",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:13.81,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_ita",place_id:"ITA",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:50.17,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_nld",place_id:"NLD",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:50.74,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_pol",place_id:"POL",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:31.15,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_prt",place_id:"PRT",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:85.19,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_sau",place_id:"SAU",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:2.16,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_esp",place_id:"ESP",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:57.34,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_swe",place_id:"SWE",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:69.36,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_che",place_id:"CHE",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:67.45,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_tur",place_id:"TUR",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:45.61,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_are",place_id:"ARE",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:8.81,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_nzl",place_id:"NZL",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:85.98,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_zwe",place_id:"ZWE",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:57.12,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_rus",place_id:"RUS",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:18.1,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"},
+{obs_id:"ren24_aus",place_id:"AUS",year:2024,variable_id:"RENEWABLE_ELECTRICITY_SHARE",value:35.08,unit:"percent",domain:"environment",evidence_type:"compiled_estimate",source_id:"OWID_EMBER_RENEWABLES_2024",confidence:"HIGH"}
+];
+
+const EVENTS = [
+{event_id:"E-001",year:2020,description:"Global COVID-19 pandemic"},
+{event_id:"E-002",year:2008,description:"Global financial crisis"},
+{event_id:"E-003",year:2020,description:"School closures (COVID-19)"},
+{event_id:"E-004",year:2024,description:"Administrative boundary reorganisation"}
+];
+
+/* ========== CONSTANTS ========== */
+const DOMAIN_COLORS = {
+employment:'#4fc3f7',housing:'#66bb6a',crime:'#ef5350',drugs_alcohol:'#ab47bc',
+education:'#ffa726',careers:'#26a69a',technology:'#ec407a',agriculture:'#78909c',
+politics:'#ff7043',physical_traces:'#29b6f6',population:'#8d6e63',environment:'#9ccc65',
+health:'#ef5350',unknown:'#b0bec5'
+};
+const DOMAIN_LABELS = {
+employment:'Employment',housing:'Housing',crime:'Crime',drugs_alcohol:'Drugs & Alcohol',
+education:'Education',careers:'Careers',technology:'Technology',agriculture:'Agriculture',
+politics:'Politics / Business / Charities',physical_traces:'Physical Traces',population:'Population',
+environment:'Environment',health:'Health',unknown:'Other'
+};
+const GLOBE_RADIUS = 5;
+
+/* ========== STATE ========== */
+let placesMap = new Map();
+let years = [];
+let markers = [];
+let globeGroup;
+let equatorGroup;
+let cameraYaw = 0;
+let cameraPitch = 0;
+let isDragging = false;
+let lastMouseX = 0;
+let lastMouseY = 0;
+let autoAnimate = false;
+let animateDir = 1;
+
+/* ========== UTILITIES ========== */
+function latLngToVec3(lat, lng, r) {
+    const phi = lat * Math.PI / 180;
+    const theta = lng * Math.PI / 180;
+    return new THREE.Vector3(
+        r * Math.cos(phi) * Math.sin(theta),
+        r * Math.sin(phi),
+        r * Math.cos(phi) * Math.cos(theta)
+    );
+}
+
+function normalisePlaceId(v) { return String(v || '').trim().toUpperCase(); }
+function number(v) {
+    if (v === null || v === undefined || v === '') return null;
+    const n = Number(String(v).replace(/,/g, ''));
+    return Number.isFinite(n) ? n : null;
+}
+function setStatus(text, type) {
+    const el = document.getElementById('status');
+    el.textContent = text;
+    el.className = 'status ' + (type || 'ok');
+}
+
+/* ========== THREE.JS ========== */
+function init() {
+    PLACES.forEach(p => placesMap.set(p.place_id, p));
+
+    years = [...new Set(OBSERVATIONS.map(d => d.year))].sort((a, b) => a - b);
+    const slider = document.getElementById('yearSlider');
+    slider.min = years[0] || 2010;
+    slider.max = years[years.length - 1] || 2024;
+    slider.value = slider.max;
+    document.getElementById('yearDisplay').textContent = slider.max;
+
+    // Renderer
+    const container = document.getElementById('canvas-container');
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x0a0e17, 1);
+    container.appendChild(renderer.domElement);
+
+    // Scene
+    const scene = new THREE.Scene();
+
+    // Camera at origin
+    const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 0.001);
+
+    // Globe group
+    globeGroup = new THREE.Group();
+    scene.add(globeGroup);
+
+    // Equator group (independent)
+    equatorGroup = new THREE.Group();
+    scene.add(equatorGroup);
+
+    // Lights
+    scene.add(new THREE.AmbientLight(0x404060, 0.5));
+    const pointLight = new THREE.PointLight(0x4fc3f7, 0.3, 100);
+    pointLight.position.set(10, 10, 10);
+    scene.add(pointLight);
+
+    // Globe background mesh (dark inner surface)
+    const bgMat = new THREE.MeshBasicMaterial({ color: 0x0d1520, side: THREE.BackSide, transparent: true, opacity: 0.2 });
+    globeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64), bgMat));
+
+    // Load world atlas for country outlines
+    fetch('https://unpkg.com/world-atlas@2/countries-110m.json')
+        .then(r => r.json())
+        .then(world => {
+            const countries = topojson.feature(world, world.objects.countries);
+            buildCountryLines(countries);
+        })
+        .catch(e => {
+            console.warn('Atlas fetch failed, using grid:', e);
+            buildGridLines();
+        });
+
+    // Build UI
+    populateUI();
+    buildEquatorRing();
+    refresh();
+    updateCamera();
+
+    // Events
+    setupEvents();
+
+    // Render loop
+    function animate() {
+        requestAnimationFrame(animate);
+        updateCamera();
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    setStatus(`Spherical lens ready — ${OBSERVATIONS.length.toLocaleString()} observations from ${placesMap.size} places`, 'ok');
+}
+
+function buildCountryLines(countries) {
+    // Remove old lines (keep globe background mesh which is first child)
+    while (globeGroup.children.length > 1) globeGroup.remove(globeGroup.children[globeGroup.children.length - 1]);
+
+    if (countries && countries.features) {
+        countries.features.forEach(feature => {
+            const geom = feature.geometry;
+            const addPolygon = (polygon) => {
+                polygon.forEach(ring => {
+                    const pts = ring.map(coord => latLngToVec3(coord[1], coord[0], GLOBE_RADIUS + 0.015));
+                    if (pts.length >= 2) {
+                        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+                        const mat = new THREE.LineBasicMaterial({ color: 0x2a3a4a, transparent: true, opacity: 0.5 });
+                        globeGroup.add(new THREE.Line(geo, mat));
+                    }
+                });
+            };
+            if (geom.type === 'MultiPolygon') geom.coordinates.forEach(addPolygon);
+            else if (geom.type === 'Polygon') addPolygon(geom.coordinates);
+        });
+    }
+    addDataMarkers();
+}
+
+function buildGridLines() {
+    const gc = 0x2a3a4a;
+    for (let lat = -60; lat <= 60; lat += 30) {
+        const pts = [];
+        for (let lng = 0; lng <= 360; lng += 5) pts.push(latLngToVec3(lat, lng, GLOBE_RADIUS + 0.015));
+        if (pts.length >= 2) {
+            globeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: gc, opacity: 0.3 })));
+        }
+    }
+    for (let lng = 0; lng < 360; lng += 30) {
+        const pts = [];
+        for (let lat = -90; lat <= 90; lat += 5) pts.push(latLngToVec3(lat, lng, GLOBE_RADIUS + 0.015));
+        if (pts.length >= 2) {
+            globeGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: gc, opacity: 0.3 })));
+        }
+    }
+    addDataMarkers();
+}
+
+function addDataMarkers() {
+    // Remove old markers
+    markers.forEach(m => globeGroup.remove(m));
+    markers = [];
+
+    const year = number(document.getElementById('yearSlider').value);
+    const domain = document.getElementById('domainSelect').value;
+    const variable = document.getElementById('variableSelect').value;
+    const place = document.getElementById('placeSelect').value;
+
+    const filtered = OBSERVATIONS.filter(d => {
+        if (year !== null && d.year > year) return false;
+        if (domain !== 'all' && d.domain !== domain) return false;
+        if (variable !== 'all' && d.variable_id !== variable) return false;
+        if (place !== 'all' && d.place_id !== place) return false;
+        return true;
+    });
+
+    const latestByPlace = new Map();
+    filtered.forEach(d => {
+        const old = latestByPlace.get(d.place_id);
+        if (!old || d.year > old.year) latestByPlace.set(d.place_id, d);
+    });
+
+    latestByPlace.forEach((d, placeId) => {
+        const place = placesMap.get(placeId);
+        if (!place) return;
+        const pos = latLngToVec3(place.lat, place.lng, GLOBE_RADIUS + 0.03);
+        const color = new THREE.Color(DOMAIN_COLORS[d.domain] || DOMAIN_COLORS.unknown);
+
+        const glowGeom = new THREE.SphereGeometry(Math.max(0.03, Math.min(0.08, 0.03 + Math.log10(Math.abs(d.value || 0) + 1) * 0.02)), 8, 8);
+        const glowMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.85 });
+        const glow = new THREE.Mesh(glowGeom, glowMat);
+        glow.position.copy(pos);
+        glow.userData = {
+            name: place.country,
+            variable: d.variable_id,
+            value: d.value,
+            unit: d.unit,
+            year: d.year,
+            domain: d.domain,
+            source: d.source_id,
+            evidence: d.evidence_type
+        };
+        globeGroup.add(glow);
+        markers.push(glow);
+
+        const coreGeom = new THREE.SphereGeometry(Math.max(0.012, 0.012), 6, 6);
+        const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const core = new THREE.Mesh(coreGeom, coreMat);
+        core.position.copy(pos);
+        globeGroup.add(core);
+        markers.push(core);
+    });
+}
+
+function buildEquatorRing() {
+    while (equatorGroup.children.length) equatorGroup.remove(equatorGroup.children[0]);
+    const pts = [];
+    for (let lng = 0; lng <= 360; lng += 2) pts.push(latLngToVec3(0, lng, GLOBE_RADIUS + 0.02));
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    equatorGroup.add(new THREE.Line(geo, new THREE.LineBasicMaterial({ color: 0x4fc3f7, transparent: true, opacity: 0.3 })));
+    [30, -30, 60, -60].forEach(lat => {
+        const pts = [];
+        for (let lng = 0; lng <= 360; lng += 2) pts.push(latLngToVec3(lat, lng, GLOBE_RADIUS + 0.015));
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        equatorGroup.add(new THREE.Line(geo, new THREE.LineBasicMaterial({ color: 0x2a3a4a, transparent: true, opacity: 0.15 })));
+    });
+}
+
+/* ========== CAMERA ========== */
+function updateCamera() {
+    const r = 0.001;
+    camera.position.set(
+        r * Math.cos(cameraPitch) * Math.sin(cameraYaw),
+        r * Math.sin(cameraPitch),
+        r * Math.cos(cameraPitch) * Math.cos(cameraYaw)
+    );
+    const lt = new THREE.Vector3(
+        Math.cos(cameraPitch) * Math.sin(cameraYaw),
+        Math.sin(cameraPitch),
+        Math.cos(cameraPitch) * Math.cos(cameraYaw)
+    );
+    camera.lookAt(lt);
+}
+
+/* ========== UI ========== */
+function populateUI() {
+    const domains = [...new Set(OBSERVATIONS.map(d => d.domain))].sort();
+    document.getElementById('domainSelect').innerHTML = '<option value="all">All Domains</option>' +
+        domains.map(d => `<option value="${d}">${DOMAIN_LABELS[d] || d}</option>`).join('');
+
+    document.getElementById('variableSelect').innerHTML = '<option value="all">All Variables</option>' +
+        [...new Set(OBSERVATIONS.map(d => d.variable_id))].sort().map(v => `<option value="${v}">${v}</option>`).join('');
+
+    document.getElementById('placeSelect').innerHTML = '<option value="all">All Places</option>' +
+        [...placesMap.values()].sort((a, b) => a.country.localeCompare(b.country)).map(p =>
+            `<option value="${p.place_id}">${p.country}</option>`
+        ).join('');
+
+    document.getElementById('legendItems').innerHTML = domains.map(d =>
+        `<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS[d] || DOMAIN_COLORS.unknown}"></div>${DOMAIN_LABELS[d] || d}</div>`
+    ).join('');
+
+    showEvents();
+}
+
+function refresh() {
+    addDataMarkers();
+    updateStats();
+    showEvents();
+}
+
+function updateStats() {
+    const year = number(document.getElementById('yearSlider').value);
+    const domain = document.getElementById('domainSelect').value;
+    const variable = document.getElementById('variableSelect').value;
+    const place = document.getElementById('placeSelect').value;
+
+    const filtered = OBSERVATIONS.filter(d => {
+        if (year !== null && d.year > year) return false;
+        if (domain !== 'all' && d.domain !== domain) return false;
+        if (variable !== 'all' && d.variable_id !== variable) return false;
+        if (place !== 'all' && d.place_id !== place) return false;
+        return true;
+    });
+
+    document.getElementById('varCount').textContent = new Set(filtered.map(d => d.variable_id)).size;
+    document.getElementById('placeCount').textContent = new Set(filtered.map(d => d.place_id)).size;
+    document.getElementById('obsCount').textContent = filtered.length.toLocaleString();
+    const ys = [...new Set(filtered.map(d => d.year))].sort((a, b) => a - b);
+    document.getElementById('timeRange').textContent = ys.length ? `${ys[0]}-${ys[ys.length - 1]}` : '—';
+}
+
+function showEvents() {
+    const year = number(document.getElementById('yearSlider').value);
+    document.getElementById('eventsList').innerHTML = EVENTS.filter(e => e.year <= year)
+        .sort((a, b) => b.year - a.year)
+        .map(e => `<div class="event-item"><span class="year">${e.year}</span> <span class="text">${e.description}</span></div>`).join('');
+}
+
+/* ========== TOOLTIP ========== */
+function setupTooltip() {
+    const canvas = document.querySelector('#canvas-container canvas');
+    if (!canvas) return;
+    canvas.addEventListener('mousemove', (e) => {
+        const tooltip = document.getElementById('tooltip');
+        const rect = canvas.getBoundingClientRect();
+        const mouse = new THREE.Vector2(
+            ((e.clientX - rect.left) / rect.width) * 2 - 1,
+            -((e.clientY - rect.top) / rect.height) * 2 + 1
+        );
+        const raycaster = new THREE.Raycaster();
+        raycaster.setFromCamera(mouse, window.camera);
+        const intersects = raycaster.intersectObjects(markers);
+        if (intersects.length > 0) {
+            const data = intersects[0].object.userData;
+            if (data.name) {
+                tooltip.style.display = 'block';
+                tooltip.style.left = (e.clientX + 15) + 'px';
+                tooltip.style.top = (e.clientY + 15) + 'px';
+                tooltip.innerHTML = `
+                    <h4>${data.name}</h4>
+                    <div class="row"><span class="label">Variable:</span> ${data.variable}</div>
+                    <div class="row"><span class="label">Value:</span> ${data.value ?? '—'} ${data.unit || ''}</div>
+                    <div class="row"><span class="label">Year:</span> ${data.year}</div>
+                    <div class="row"><span class="label">Domain:</span> ${DOMAIN_LABELS[data.domain] || data.domain}</div>
+                    <div class="row"><span class="label">Evidence:</span> ${data.evidence || '—'}</div>
+                `;
+            }
+        } else {
+            tooltip.style.display = 'none';
+        }
+    });
+    canvas.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+}
+
+/* ========== EVENTS ========== */
+function setupEvents() {
+    const canvas = document.querySelector('#canvas-container canvas');
+
+    // Mouse drag for orbit
+    canvas.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+    });
+    canvas.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        cameraYaw += (e.clientX - lastMouseX) * 0.005;
+        cameraPitch -= (e.clientY - lastMouseY) * 0.005;
+        cameraPitch = Math.max(-Math.PI / 2 + 0.01, Math.min(Math.PI / 2 - 0.01, cameraPitch));
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+    });
+    canvas.addEventListener('mouseup', () => { isDragging = false; });
+    canvas.addEventListener('mouseleave', () => { isDragging = false; });
+
+    // Touch support
+    canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+            isDragging = true;
+            lastMouseX = e.touches[0].clientX;
+            lastMouseY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+    canvas.addEventListener('touchmove', (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        cameraYaw += (e.touches[0].clientX - lastMouseX) * 0.005;
+        cameraPitch -= (e.touches[0].clientY - lastMouseY) * 0.005;
+        cameraPitch = Math.max(-Math.PI / 2 + 0.01, Math.min(Math.PI / 2 - 0.01, cameraPitch));
+        lastMouseX = e.touches[0].clientX;
+        lastMouseY = e.touches[0].clientY;
+    }, { passive: true });
+    canvas.addEventListener('touchend', () => { isDragging = false; });
+
+    // UI controls
+    document.getElementById('domainSelect').addEventListener('change', refresh);
+    document.getElementById('variableSelect').addEventListener('change', refresh);
+    document.getElementById('placeSelect').addEventListener('change', refresh);
+    document.getElementById('vizMode').addEventListener('change', refresh);
+
+    document.getElementById('yearSlider').addEventListener('input', function() {
+        document.getElementById('yearDisplay').textContent = this.value;
+        showEvents();
+        refresh();
+    });
+
+    document.getElementById('animateBtn').addEventListener('click', function() {
+        autoAnimate = !autoAnimate;
+        this.textContent = autoAnimate ? '⏸ Pause' : '▶ Animate Time';
+        if (autoAnimate) runAnim();
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+        cameraYaw = 0;
+        cameraPitch = 0;
+        const slider = document.getElementById('yearSlider');
+        slider.value = slider.max;
+        document.getElementById('yearDisplay').textContent = slider.max;
+        showEvents();
+        refresh();
+    });
+
+    // Tooltip
+    setupTooltip();
+}
+
+function runAnim() {
+    if (!autoAnimate) return;
+    const slider = document.getElementById('yearSlider');
+    const maxY = parseInt(slider.max);
+    const minY = parseInt(slider.min);
+    let cur = parseInt(slider.value) + animateDir;
+    if (cur > maxY) { cur = maxY; animateDir = -1; }
+    if (cur < minY) { cur = minY; animateDir = 1; }
+    slider.value = cur;
+    document.getElementById('yearDisplay').textContent = cur;
+    showEvents();
+    refresh();
+    setTimeout(runAnim, 400);
+}
+
+/* ========== RESIZE ========== */
+window.addEventListener('resize', () => {
+    if (window.camera && window.renderer) {
+        window.camera.aspect = window.innerWidth / window.innerHeight;
+        window.camera.updateProjectionMatrix();
+        window.renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+});
+
+/* ========== BOOT ========== */
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
