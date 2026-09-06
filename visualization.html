@@ -3,423 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The World We Make — Data Visualization</title>
+<title>The World We Make — World Lens</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://unpkg.com/topojson@3"></script>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e17; color: #e0e6ed; overflow: hidden; }
-#map { width: 100vw; height: 100vh; }
-.sidebar { position: absolute; top: 10px; left: 10px; width: 320px; max-height: calc(100vh - 20px); background: rgba(15,20,30,0.95); border: 1px solid #2a3a4a; border-radius: 8px; padding: 16px; overflow-y: auto; z-index: 1000; backdrop-filter: blur(10px); }
-.sidebar h2 { color: #4fc3f7; font-size: 16px; margin-bottom: 12px; border-bottom: 1px solid #2a3a4a; padding-bottom: 8px; }
-.sidebar label { display: block; font-size: 12px; color: #8899aa; margin-top: 10px; margin-bottom: 4px; }
-.sidebar select, .sidebar input { width: 100%; padding: 6px; background: #1a2535; border: 1px solid #2a3a4a; border-radius: 4px; color: #e0e6ed; font-size: 13px; margin-bottom: 4px; }
-.sidebar button { width: 100%; padding: 8px; background: #1565c0; border: none; border-radius: 4px; color: white; font-size: 13px; cursor: pointer; margin-top: 6px; }
-.sidebar button:hover { background: #1976d2; }
-.sidebar button.active { background: #43a047; }
-.sidebar button.reset { background: #c62828; }
-.sidebar button.reset:hover { background: #d32f2f; }
-.stats { margin-top: 12px; padding: 8px; background: #1a2535; border-radius: 4px; font-size: 12px; }
-.stats div { margin: 2px 0; }
-.stats .val { color: #4fc3f7; font-weight: bold; }
-.timeline-container { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(15,20,30,0.95); border: 1px solid #2a3a4a; border-radius: 8px; padding: 12px 20px; z-index: 1000; backdrop-filter: blur(10px); display: flex; align-items: center; gap: 15px; }
-.timeline-container label { font-size: 12px; color: #8899aa; white-space: nowrap; }
-.timeline-container input[type="range"] { width: 300px; accent-color: #4fc3f7; }
-.timeline-container span { font-size: 14px; color: #4fc3f7; font-weight: bold; min-width: 40px; }
-.legend { position: absolute; bottom: 80px; right: 10px; background: rgba(15,20,30,0.95); border: 1px solid #2a3a4a; border-radius: 8px; padding: 12px; z-index: 1000; backdrop-filter: blur(10px); }
-.legend h3 { font-size: 12px; color: #4fc3f7; margin-bottom: 8px; }
-.legend-item { display: flex; align-items: center; gap: 8px; margin: 3px 0; font-size: 11px; }
-.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
-.tooltip { position: absolute; background: rgba(15,20,30,0.95); border: 1px solid #4fc3f7; border-radius: 6px; padding: 10px; z-index: 2000; font-size: 12px; pointer-events: none; max-width: 250px; backdrop-filter: blur(10px); }
-.tooltip h4 { color: #4fc3f7; margin-bottom: 4px; }
-.tooltip .row { margin: 2px 0; }
-.tooltip .label { color: #8899aa; }
-.tooltip .value { color: #e0e6ed; }
-.leaflet-container { background: #0a0e17; }
-.events-panel { position: absolute; top: 10px; right: 10px; background: rgba(15,20,30,0.95); border: 1px solid #2a3a4a; border-radius: 8px; padding: 12px; z-index: 1000; max-width: 300px; backdrop-filter: blur(10px); max-height: 300px; overflow-y: auto; }
-.events-panel h3 { color: #4fc3f7; font-size: 14px; margin-bottom: 8px; }
-.event-item { padding: 4px 0; border-bottom: 1px solid #1a2535; font-size: 11px; }
-.event-item .year { color: #ffb74d; font-weight: bold; }
-.event-item .text { color: #c0c8d0; }
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#0a0e17;color:#e0e6ed;overflow:hidden}#map{width:100vw;height:100vh}.sidebar,.events-panel,.legend,.timeline-container{position:absolute;background:rgba(15,20,30,.95);border:1px solid #2a3a4a;border-radius:8px;z-index:1000;backdrop-filter:blur(10px)}.sidebar{top:10px;left:10px;width:330px;max-height:calc(100vh - 20px);padding:16px;overflow-y:auto}.sidebar h2{color:#4fc3f7;font-size:16px;margin-bottom:12px;border-bottom:1px solid #2a3a4a;padding-bottom:8px}.sidebar label{display:block;font-size:12px;color:#8899aa;margin-top:10px;margin-bottom:4px}.sidebar select,.sidebar input{width:100%;padding:6px;background:#1a2535;border:1px solid #2a3a4a;border-radius:4px;color:#e0e6ed;font-size:13px;margin-bottom:4px}.sidebar button{width:100%;padding:8px;background:#1565c0;border:none;border-radius:4px;color:white;font-size:13px;cursor:pointer;margin-top:6px}.sidebar button:hover{background:#1976d2}.sidebar button.reset{background:#c62828}.stats{margin-top:12px;padding:8px;background:#1a2535;border-radius:4px;font-size:12px}.stats div{margin:2px 0}.stats .val{color:#4fc3f7;font-weight:bold}.status{margin-top:8px;padding:7px;border-radius:4px;background:#17202c;font-size:11px;color:#aebbc8}.status.ok{border-left:3px solid #43a047}.status.warn{border-left:3px solid #ffb74d}.timeline-container{bottom:20px;left:50%;transform:translateX(-50%);padding:12px 20px;display:flex;align-items:center;gap:15px}.timeline-container label{font-size:12px;color:#8899aa;white-space:nowrap}.timeline-container input{width:300px;accent-color:#4fc3f7}.timeline-container span{font-size:14px;color:#4fc3f7;font-weight:bold;min-width:40px}.legend{bottom:80px;right:10px;padding:12px}.legend h3,.events-panel h3{font-size:12px;color:#4fc3f7;margin-bottom:8px}.legend-item{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px}.legend-dot{width:10px;height:10px;border-radius:50%}.events-panel{top:10px;right:10px;padding:12px;max-width:300px;max-height:300px;overflow-y:auto}.event-item{padding:4px 0;border-bottom:1px solid #1a2535;font-size:11px}.event-item .year{color:#ffb74d;font-weight:bold}.event-item .text{color:#c0c8d0}.tooltip{position:absolute;background:rgba(15,20,30,.95);border:1px solid #4fc3f7;border-radius:6px;padding:10px;z-index:2000;font-size:12px;pointer-events:none;max-width:280px}.tooltip h4{color:#4fc3f7;margin-bottom:4px}.tooltip .row{margin:2px 0}.tooltip .label{color:#8899aa}.tooltip .value{color:#e0e6ed}.leaflet-container{background:#0a0e17}
 </style>
 </head>
 <body>
 <div id="map"></div>
 <div class="sidebar">
-<h2>🌍 The World We Make</h2>
-<label>Domain / Category:</label>
-<select id="domainSelect">
-<option value="all">All Domains</option>
-<option value="employment">Employment</option>
-<option value="housing">Housing</option>
-<option value="crime">Crime</option>
-<option value="drugs_alcohol">Drugs & Alcohol</option>
-<option value="education">Education</option>
-<option value="careers">Careers</option>
-<option value="technology">Technology</option>
-<option value="agriculture">Agriculture</option>
-<option value="politics">Politics/Business/Charities</option>
-</select>
-<label>Variable:</label>
-<select id="variableSelect"><option value="all">All Variables</option></select>
-<label>Place (Origin):</label>
-<select id="placeSelect"><option value="all">All Places</option></select>
-<label>Visualization Mode:</label>
-<select id="vizMode">
-<option value="origins">Origin Markers</option>
-<option value="spread">Spread Paths</option>
-<option value="both">Origins + Spread</option>
-</select>
-<button id="animateBtn">▶ Animate Spread</button>
-<button id="resetBtn" class="reset">⟲ Reset View</button>
-<div class="stats">
-<div>Variables loaded: <span class="val" id="varCount">—</span></div>
-<div>Places: <span class="val" id="placeCount">—</span></div>
-<div>Observations: <span class="val" id="obsCount">—</span></div>
-<div>Time range: <span class="val" id="timeRange">—</span></div>
+<h2>🌍 The World We Make — World Lens</h2>
+<label>Domain / Category:</label><select id="domainSelect"><option value="all">All Domains</option></select>
+<label>Variable:</label><select id="variableSelect"><option value="all">All Variables</option></select>
+<label>Place:</label><select id="placeSelect"><option value="all">All Places</option></select>
+<label>Visualization Mode:</label><select id="vizMode"><option value="observations">Observations</option><option value="origins">Coverage / Origins</option><option value="spread">Temporal Change</option><option value="both">Coverage + Change</option></select>
+<button id="animateBtn">▶ Animate Time</button><button id="resetBtn" class="reset">⟲ Reset View</button>
+<div class="stats"><div>Variables loaded: <span class="val" id="varCount">—</span></div><div>Places: <span class="val" id="placeCount">—</span></div><div>Observations: <span class="val" id="obsCount">—</span></div><div>Time range: <span class="val" id="timeRange">—</span></div></div>
+<div id="status" class="status">Loading project data…</div>
 </div>
-</div>
-<div class="events-panel">
-<h3>📅 Evolution Events</h3>
-<div id="eventsList"></div>
-</div>
-<div class="legend">
-<h3>Legend</h3>
-<div class="legend-item"><div class="legend-dot" style="background:#4fc3f7"></div> Employment</div>
-<div class="legend-item"><div class="legend-dot" style="background:#66bb6a"></div> Housing</div>
-<div class="legend-item"><div class="legend-dot" style="background:#ef5350"></div> Crime</div>
-<div class="legend-item"><div class="legend-dot" style="background:#ab47bc"></div> Drugs & Alcohol</div>
-<div class="legend-item"><div class="legend-dot" style="background:#ffa726"></div> Education</div>
-<div class="legend-item"><div class="legend-dot" style="background:#26a69a"></div> Careers</div>
-<div class="legend-item"><div class="legend-dot" style="background:#ec407a"></div> Technology</div>
-<div class="legend-item"><div class="legend-dot" style="background:#78909c"></div> Agriculture</div>
-<div class="legend-item"><div class="legend-dot" style="background:#ff7043"></div> Politics/Business</div>
-</div>
-<div class="timeline-container">
-<label>Year:</label>
-<input type="range" id="yearSlider" min="2010" max="2024" value="2024" step="1">
-<span id="yearDisplay">2024</span>
-</div>
-<div class="tooltip" id="tooltip" style="display:none;"></div>
-
+<div class="events-panel"><h3>📅 Evolution Events</h3><div id="eventsList"></div></div>
+<div class="legend"><h3>Legend</h3><div id="legendItems"></div></div>
+<div class="timeline-container"><label>Year:</label><input type="range" id="yearSlider" min="1900" max="2026" value="2024" step="1"><span id="yearDisplay">2024</span></div>
+<div class="tooltip" id="tooltip" style="display:none"></div>
 <script>
-const DOMAIN_COLORS = {
-  employment: '#4fc3f7', housing: '#66bb6a', crime: '#ef5350',
-  drugs_alcohol: '#ab47bc', education: '#ffa726', careers: '#26a69a',
-  technology: '#ec407a', agriculture: '#78909c', politics: '#ff7043'
-};
-const DOMAIN_LABELS = {
-  employment: 'Employment', housing: 'Housing', crime: 'Crime',
-  drugs_alcohol: 'Drugs & Alcohol', education: 'Education', careers: 'Careers',
-  technology: 'Technology', agriculture: 'Agriculture', politics: 'Politics/Business/Charities'
-};
-const VARIABLES = {
-  employment: ['EMPLOYMENT_RATE','JOB_VACANCIES','ADVERTISED_JOBS'],
-  housing: ['HOUSING_STOCK','OCCUPIED_HOUSING','AVAILABLE_HOUSING'],
-  crime: ['CRIME_TOTAL','CRIME_REPORTED','CRIME_RECORDED'],
-  drugs_alcohol: ['ALCOHOL_CONSUMPTION','DRUG_OVERDOSE','DRUG_TREATMENT','DRUG_SEIZURES','ALCOHOL_TREATMENT'],
-  education: ['SCHOOL_ENROLLMENT_PRIMARY','SCHOOL_ENROLLMENT_SECONDARY','SCHOOL_ENROLLMENT_TERTIARY','TEACHER_PUPIL_RATIO','LITERACY_RATE'],
-  careers: ['UNEMPLOYMENT_YOUNG','AVERAGE_SALARY'],
-  technology: ['PATENTS_PER_CAPITA','RD_EXPENDITURE','INTERNET_USERS','MOBILE_SUBSCRIPTIONS','DIGITAL_PAYMENT_USAGE'],
-  agriculture: ['AGRICULTURE_PRODUCTION_INDEX','FOOD_EXPOSURE','FOOD_IMPORT_SHARE'],
-  politics: ['GDP_PC_CURRENT_USD','LIFE_EXPECTANCY','POP_TOTAL']
-};
-const PLACES_DATA = [
-  {id:'AFG',name:'Afghanistan',lat:33.93911,lng:67.70995},
-  {id:'MNG',name:'Mongolia',lat:46.86250,lng:103.84666},
-  {id:'FJI',name:'Fiji',lat:-17.71338,lng:178.06503},
-  {id:'USA',name:'United States',lat:37.09024,lng:-95.71289},
-  {id:'GEO',name:'Georgia',lat:42.31540,lng:43.35689},
-  {id:'LCA',name:'Saint Lucia',lat:13.90000,lng:-60.98333},
-  {id:'OMN',name:'Oman',lat:21.47350,lng:55.97540},
-  {id:'BHS',name:'Bahamas',lat:25.03430,lng:-77.39630},
-  {id:'CIV',name:"Cote d'Ivoire",lat:7.54000,lng:-5.54710},
-  {id:'RUS',name:'Russia',lat:61.52401,lng:105.31876},
-  {id:'AUS',name:'Australia',lat:-25.27440,lng:133.77514},
-  {id:'IND',name:'India',lat:20.59368,lng:78.96288},
-  {id:'CHN',name:'China',lat:35.86166,lng:104.19540},
-  {id:'BRA',name:'Brazil',lat:-14.23500,lng:-51.92528},
-  {id:'DEU',name:'Germany',lat:51.16569,lng:10.45152},
-  {id:'GBR',name:'United Kingdom',lat:55.37805,lng:-3.43597},
-  {id:'JPN',name:'Japan',lat:36.20482,lng:138.25292},
-  {id:'SAU',name:'Saudi Arabia',lat:23.88594,lng:45.07916},
-  {id:'NGA',name:'Nigeria',lat:9.08200,lng:8.67530},
-  {id:'ZAF',name:'South Africa',lat:-30.55948,lng:22.93751},
-  {id:'MEX',name:'Mexico',lat:23.63450,lng:-102.55280},
-  {id:'IDN',name:'Indonesia',lat:-0.78928,lng:113.92133},
-  {id:'EGY',name:'Egypt',lat:26.82055,lng:30.80250},
-  {id:'ARG',name:'Argentina',lat:-38.41610,lng:-63.61667},
-  {id:'KAZ',name:'Kazakhstan',lat:48.01957,lng:66.92368},
-  {id:'SWE',name:'Sweden',lat:60.12816,lng:18.64350},
-  {id:'NOR',name:'Norway',lat:60.47202,lng:8.46895},
-  {id:'KOR',name:'South Korea',lat:35.90776,lng:127.76692},
-  {id:'ITA',name:'Italy',lat:41.87194,lng:12.56738},
-  {id:'TUR',name:'Turkey',lat:38.96375,lng:35.24332},
-  {id:'ESP',name:'Spain',lat:40.46367,lng:-3.74922},
-  {id:'FRA',name:'France',lat:46.22764,lng:2.21374},
-  {id:'CAN',name:'Canada',lat:56.13036,lng:-106.34677},
-  {id:'THA',name:'Thailand',lat:15.87003,lng:100.99254},
-  {id:'PHL',name:'Philippines',lat:12.87972,lng:121.77402},
-  {id:'MYS',name:'Malaysia',lat:4.21050,lng:101.97577},
-  {id:'VNM',name:'Vietnam',lat:14.05832,lng:108.27720},
-  {id:'PAK',name:'Pakistan',lat:30.37532,lng:69.34512},
-  {id:'BGD',name:'Bangladesh',lat:23.68500,lng:90.35633},
-  {id:'ETH',name:'Ethiopia',lat:9.14500,lng:40.48967},
-  {id:'KEN',name:'Kenya',lat:-0.02360,lng:37.90619},
-  {id:'TZA',name:'Tanzania',lat:-6.36903,lng:34.88882},
-  {id:'UGA',name:'Uganda',lat:1.37333,lng:32.29028},
-  {id:'MOZ',name:'Mozambique',lat:-18.66569,lng:35.52956},
-  {id:'PER',name:'Peru',lat:-9.18997,lng:-75.01515},
-  {id:'COL',name:'Colombia',lat:4.57087,lng:-74.29733},
-  {id:'CHL',name:'Chile',lat:-35.67515,lng:-71.54297},
-  {id:'NZL',name:'New Zealand',lat:-40.90056,lng:174.88597},
-  {id:'IRL',name:'Ireland',lat:53.41291,lng:-8.24389},
-  {id:'POL',name:'Poland',lat:51.91944,lng:19.14514},
-  {id:'UKR',name:'Ukraine',lat:48.37943,lng:31.16558},
-  {id:'MMR',name:'Myanmar',lat:21.91396,lng:95.95622},
-  {id:'DZA',name:'Algeria',lat:28.03389,lng:1.65963},
-  {id:'IRQ',name:'Iraq',lat:33.22319,lng:43.67929},
-  {id:'IRN',name:'Iran',lat:32.42791,lng:53.68804},
-  {id:'ARE',name:'UAE',lat:23.42408,lng:53.84782},
-  {id:'QAT',name:'Qatar',lat:25.35483,lng:51.18388},
-  {id:'KWT',name:'Kuwait',lat:29.31167,lng:47.48177},
-  {id:'JOR',name:'Jordan',lat:30.58516,lng:36.23841},
-  {id:'LBN',name:'Lebanon',lat:33.85472,lng:35.86229},
-  {id:'TLS',name:'Timor-Leste',lat:-8.87422,lng:125.72753},
-  {id:'PNG',name:'Papua New Guinea',lat:-6.31499,lng:143.95555},
-  {id:'SDN',name:'Sudan',lat:12.86281,lng:30.21764},
-  {id:'SOM',name:'Somalia',lat:5.15215,lng:46.19962},
-  {id:'MDG',name:'Madagascar',lat:-18.76695,lng:46.86911},
-  {id:'CMR',name:'Cameroon',lat:7.36975,lng:12.35472},
-  {id:'NGA',name:'Nigeria',lat:9.08200,lng:8.67530},
-  {id:'COG',name:"Congo",lat:-0.22802,lng:15.82766},
-  {id:'GAB',name:'Gabon',lat:-0.80369,lng:11.60944},
-  {id:'SEN',name:'Senegal',lat:14.49740,lng:-14.45236},
-  {id:'GHA',name:'Ghana',lat:7.94653,lng:-1.02319},
-  {id:'TGO',name:'Togo',lat:8.61954,lng:0.82479},
-  {id:'BEN',name:'Benin',lat:9.30769,lng:2.31583},
-  {id:'NGA',name:'Nigeria',lat:9.08200,lng:8.67530}
-];
-const EVENTS = [
-  {year:2010,text:'Initial dataset seeding with POP_TOTAL, GDP_PC, LIFE_EXPECTANCY'},
-  {year:2012,text:'Employment & Housing domains introduced'},
-  {year:2014,text:'Crime variable categories added with paired distinctions'},
-  {year:2015,text:'Drugs & Alcohol domain expanded'},
-  {year:2016,text:'Education & Careers variables integrated'},
-  {year:2017,text:'Technology domain (internet, mobile, digital payments)'},
-  {year:2018,text:'Agriculture domain with food exposure metrics'},
-  {year:2019,text:'Politics/Business/Charities domain added'},
-  {year:2020,text:'COVID-19 pandemic data capture begins'},
-  {year:2021,text:'Expanded place registry to 53 locations'},
-  {year:2022,text:'Crosswalks and methodology documentation formalized'},
-  {year:2023,text:'Agent proposals for paired distinctions formalized'},
-  {year:2024,text:'Full dataset compilation complete'}
-];
-
-const MAP_COLORS = ['#4fc3f7','#66bb6a','#ef5350','#ab47bc','#ffa726','#26a69a','#ec407a','#78909c','#ff7043'];
-let map, markers = [], paths = [];
-let allData = [];
-
-// Generate synthetic observation data based on variable definitions
-function generateObservations() {
-  const data = [];
-  const domains = Object.keys(VARIABLES);
-  domains.forEach(domain => {
-    VARIABLES[domain].forEach((vid, vi) => {
-      const places = PLACES_DATA.slice(0, 15);
-      places.forEach((place, pi) => {
-        const year = 2010 + Math.floor(Math.random() * 15);
-        const value = (Math.random() * 100).toFixed(2);
-        const confidences = ['high','medium','low'];
-        data.push({
-          obs_id: `OBS-${domain.substring(0,3).toUpperCase()}-${vi}-${pi}-${year}`,
-          variable_id: vid,
-          domain: domain,
-          place_id: place.id,
-          place_name: place.name,
-          lat: place.lat,
-          lng: place.lng,
-          year: year,
-          value: value,
-          source_id: `SRC-${String(pi+1).padStart(3,'0')}`,
-          confidence: confidences[Math.floor(Math.random()*3)],
-          status: 'verified',
-          domain_label: DOMAIN_LABELS[domain]
-        });
-      });
-    });
-  });
-  return data;
+const DATA_ROOT='data/';
+const DOMAIN_COLORS={employment:'#4fc3f7',housing:'#66bb6a',crime:'#ef5350',drugs_alcohol:'#ab47bc',education:'#ffa726',careers:'#26a69a',technology:'#ec407a',agriculture:'#78909c',politics:'#ff7043',physical_traces:'#29b6f6',population:'#8d6e63',environment:'#9ccc65',health:'#ef5350',unknown:'#b0bec5'};
+const domainLabels={employment:'Employment',housing:'Housing',crime:'Crime',drugs_alcohol:'Drugs & Alcohol',education:'Education',careers:'Careers',technology:'Technology',agriculture:'Agriculture',politics:'Politics / Business / Charities',physical_traces:'Physical Traces',population:'Population',environment:'Environment',health:'Health',unknown:'Other'};
+let map,markers=[],paths=[],allData=[],places=new Map(),events=[],years=[];
+function setStatus(text,type='ok'){const el=document.getElementById('status');el.textContent=text;el.className='status '+type}
+function normalisePlaceId(v){return String(v??'').trim().toUpperCase()}
+function number(v){if(v===null||v===undefined||v==='')return null;const n=Number(String(v).replace(/,/g,''));return Number.isFinite(n)?n:null}
+function csvRows(text){return d3.csvParse(text)}
+function inferDomain(variable,path){const v=String(variable||'').toLowerCase();const p=String(path||'').toLowerCase();if(/employment|vacanc|job_|salary|unemployment/.test(v))return'employment';if(/housing/.test(v))return'housing';if(/crime/.test(v))return'crime';if(/drug|alcohol/.test(v))return'drugs_alcohol';if(/school|literacy|education|teacher|enrollment/.test(v))return'education';if(/patent|rd_|internet|mobile|digital|technology/.test(v))return'technology';if(/agri|food/.test(v))return'agriculture';if(/gdp|life_expectancy|population|pop_/.test(v))return'politics';if(/nighttime|electricity|co2|freight|waste|mobility|flood|built_area|urban/.test(v)||p.includes('physical_traces'))return'physical_traces';if(p.includes('population'))return'population';return'unknown'}
+async function loadCsv(path){const r=await fetch(DATA_ROOT+path,{cache:'no-cache'});if(!r.ok)throw new Error(`${path}: HTTP ${r.status}`);return d3.csvParse(await r.text())}
+async function loadProjectData(){
+  const candidates=['seed_employment_housing_crime_observations.csv','seed_expanded_observations.csv','seed_expanded_places.csv','physical_traces/nighttime_lights_nigeria_adm1_2012_2024.csv','population/space2stats_population_api_examples_2020.csv','physical_traces/flood_exposure_worldpop_landscan_hrsl_1in100.csv','physical_traces/electricity_worldbank_2020.csv','physical_traces/atmospheric_co2_2020.csv','physical_traces/freight_container_port_2020.csv','physical_traces/waste_generation_2016.csv','physical_traces/mobility_air_passengers_2020.csv','physical_traces/built_area_global_1975_2030.csv','physical_traces/urbanization_global_1975_2020.csv','physical_traces/wastewater_global_europe_2025.csv'];
+  const loaded=[];const failures=[];
+  for(const path of candidates){try{const rows=await loadCsv(path);loaded.push({path,rows});}catch(e){failures.push(path)}}
+  const byObs=new Map();
+  for(const {path,rows} of loaded){for(const r of rows){const place=normalisePlaceId(r.place_id||r.PLACE||r.country_code||r.iso3||r.country||r.adm1_code);const variable=r.variable_id||r.VARIABLE||r.variable||r.indicator||r.metric;const year=number(r.time_id||r.YEAR||r.year||r.time||r.period);const value=number(r.value_numeric??r.VALUE??r.value??r.observation);if(!place||!variable||year===null)continue;const id=r.observation_id||r.obs_id||`${path}|${place}|${variable}|${year}|${r.value_numeric??r.VALUE??r.value??''}`;if(!byObs.has(id))byObs.set(id,{obs_id:id,place_id:place,variable_id:String(variable),year,value,unit:r.unit||r.UNIT||'',evidence_type:r.evidence_type||'',source_id:r.source_id||r.SOURCE_ID||'',confidence:r.confidence||'',status:r.status||'known',domain:inferDomain(variable,path),path});}}
+  allData=[...byObs.values()];
+  await loadPlaceMetadata();
+  await loadEvents();
+  buildYears();
+  if(allData.length){setStatus(`Live project data loaded: ${allData.length.toLocaleString()} observations${failures.length?' · some optional files unavailable':''}`,failures.length?'warn':'ok')}else setStatus('No compatible observation CSVs found. Check data paths.', 'warn');
 }
-
-function initMap() {
-  map = L.map('map', { zoomControl: false }).setView([25, 15], 2);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© OpenStreetMap © CARTO',
-    maxZoom: 18
-  }).addTo(map);
-  L.control.zoom({ position: 'bottomright' }).addTo(map);
-
-  // Add world outline
-  fetch('https://unpkg.com/world-atlas@2/countries-110m.json')
-    .then(r => r.json())
-    .then(world => {
-      const countries = topojson.feature(world, world.objects.countries);
-      L.geoJSON(countries, {
-        style: { color: '#2a3a4a', weight: 0.5, fillColor: '#1a2535', fillOpacity: 0.3 }
-      }).addTo(map);
-    })
-    .catch(() => {});
+async function loadPlaceMetadata(){
+  try{const rows=await loadCsv('seed_expanded_places.csv');rows.forEach(r=>{const id=normalisePlaceId(r.place_id||r.id||r.ISO3||r.iso3);const lat=number(r.latitude||r.lat);const lng=number(r.longitude||r.lng||r.lon);if(id&&lat!==null&&lng!==null)places.set(id,{id,name:r.name||r.place_name||id,lat,lng})})}catch(e){}
+  const fallback={USA:[37.09024,-95.71289],GBR:[55.37805,-3.43597],DEU:[51.16569,10.45152],JPN:[36.20482,138.25292],IND:[20.59368,78.96288],BRA:[-14.235,-51.92528],CHN:[35.86166,104.1954],NGA:[9.082,8.6753],ZAF:[-30.55948,22.93751],KEN:[-0.0236,37.90619],RUS:[61.52401,105.31876],AUS:[-25.2744,133.77514]};
+  allData.forEach(d=>{if(!places.has(d.place_id)&&fallback[d.place_id]){const x=fallback[d.place_id];places.set(d.place_id,{id:d.place_id,name:d.place_id,lat:x[0],lng:x[1]})}});
 }
-
-function populateSelects() {
-  const vSelect = document.getElementById('variableSelect');
-  const pSelect = document.getElementById('placeSelect');
-  let html = '<option value="all">All Variables</option>';
-  Object.entries(DOMAIN_LABELS).forEach(([key, label]) => {
-    html += `<optgroup label="${label}">`;
-    VARIABLES[key].forEach(v => { html += `<option value="${v}">${v}</option>`; });
-    html += '</optgroup>';
-  });
-  vSelect.innerHTML = html;
-
-  let ph = '<option value="all">All Places</option>';
-  PLACES_DATA.forEach(p => { ph += `<option value="${p.id}">${p.name}</option>`; });
-  pSelect.innerHTML = ph;
-}
-
-function getFilteredData() {
-  const domain = document.getElementById('domainSelect').value;
-  const variable = document.getElementById('variableSelect').value;
-  const place = document.getElementById('placeSelect').value;
-  const year = parseInt(document.getElementById('yearSlider').value);
-  let filtered = allData.filter(d => d.year <= year);
-  if (domain !== 'all') filtered = filtered.filter(d => d.domain === domain);
-  if (variable !== 'all') filtered = filtered.filter(d => d.variable_id === variable);
-  if (place !== 'all') filtered = filtered.filter(d => d.place_id === place);
-  return filtered;
-}
-
-function clearMap() {
-  markers.forEach(m => map.removeLayer(m));
-  paths.forEach(p => map.removeLayer(p));
-  markers = [];
-  paths = [];
-}
-
-function showOrigins(filtered) {
-  const domainMap = {};
-  filtered.forEach(d => {
-    if (!domainMap[d.domain]) domainMap[d.domain] = new Set();
-    domainMap[d.domain].add(d.place_id);
-  });
-  Object.entries(domainMap).forEach(([domain, places]) => {
-    places.forEach(pid => {
-      const p = PLACES_DATA.find(pl => pl.id === pid);
-      if (!p) return;
-      const color = DOMAIN_COLORS[domain] || '#ffffff';
-      const marker = L.circleMarker([p.lat, p.lng], {
-        radius: 6, fillColor: color, color: color, weight: 1, opacity: 1, fillOpacity: 0.8
-      }).addTo(map);
-      marker.bindTooltip(`<b>${p.name}</b><br>Domain: ${DOMAIN_LABELS[domain]}<br>Place ID: ${pid}`, { className: '' });
-      marker.on('mouseover', function() { this.openTooltip(); });
-      markers.push(marker);
-    });
-  });
-}
-
-function showSpread(filtered) {
-  const byPlace = {};
-  filtered.forEach(d => {
-    if (!byPlace[d.domain]) byPlace[d.domain] = [];
-    if (!byPlace[d.domain].includes(d.place_id)) byPlace[d.domain].push(d.place_id);
-  });
-  Object.entries(byPlace).forEach(([domain, placeIds]) => {
-    if (placeIds.length < 2) return;
-    const color = DOMAIN_COLORS[domain] || '#ffffff';
-    for (let i = 0; i < placeIds.length - 1; i++) {
-      const p1 = PLACES_DATA.find(p => p.id === placeIds[i]);
-      const p2 = PLACES_DATA.find(p => p.id === placeIds[i+1]);
-      if (!p1 || !p2) continue;
-      const latlngs = [[p1.lat, p1.lng], [p2.lat, p2.lng]];
-      const polyline = L.polyline(latlngs, { color: color, weight: 1.5, opacity: 0.4, dashArray: '5,10' }).addTo(map);
-      paths.push(polyline);
-    }
-  });
-}
-
-function showEvents() {
-  const list = document.getElementById('eventsList');
-  list.innerHTML = '';
-  EVENTS.forEach(e => {
-    const div = document.createElement('div');
-    div.className = 'event-item';
-    div.innerHTML = `<span class="year">${e.year}</span> <span class="text">${e.text}</span>`;
-    list.appendChild(div);
-  });
-}
-
-function animateSpread() {
-  clearMap();
-  const btn = document.getElementById('animateBtn');
-  const filtered = getFilteredData();
-  const years = [...new Set(filtered.map(d => d.year))].sort();
-  let idx = 0;
-  const interval = setInterval(() => {
-    if (idx >= years.length) { clearInterval(interval); return; }
-    const yearData = filtered.filter(d => d.year === years[idx]);
-    document.getElementById('yearSlider').value = years[idx];
-    document.getElementById('yearDisplay').textContent = years[idx];
-    clearMap();
-    showOrigins(yearData);
-    showSpread(yearData);
-    idx++;
-  }, 800);
-  btn.textContent = '⏸ Playing...';
-  setTimeout(() => { btn.textContent = '▶ Animate Spread'; }, years.length * 800);
-}
-
-function updateStats() {
-  const filtered = getFilteredData();
-  document.getElementById('varCount').textContent = new Set(filtered.map(d => d.variable_id)).size;
-  document.getElementById('placeCount').textContent = new Set(filtered.map(d => d.place_id)).size;
-  document.getElementById('obsCount').textContent = filtered.length.toLocaleString();
-  const years = [...new Set(filtered.map(d => d.year))].sort();
-  document.getElementById('timeRange').textContent = years.length ? `${years[0]}-${years[years.length-1]}` : '—';
-}
-
-function refreshMap() {
-  clearMap();
-  const mode = document.getElementById('vizMode').value;
-  const filtered = getFilteredData();
-  if (mode === 'origins' || mode === 'both') showOrigins(filtered);
-  if (mode === 'spread' || mode === 'both') showSpread(filtered);
-  updateStats();
-}
-
-// Init
-allData = generateObservations();
-initMap();
-populateSelects();
-showEvents();
-refreshMap();
-
-document.getElementById('domainSelect').addEventListener('change', refreshMap);
-document.getElementById('variableSelect').addEventListener('change', refreshMap);
-document.getElementById('placeSelect').addEventListener('change', refreshMap);
-document.getElementById('vizMode').addEventListener('change', refreshMap);
-document.getElementById('yearSlider').addEventListener('input', function() {
-  document.getElementById('yearDisplay').textContent = this.value;
-  refreshMap();
-});
-document.getElementById('animateBtn').addEventListener('click', animateSpread);
-document.getElementById('resetBtn').addEventListener('click', function() {
-  map.setView([25, 15], 2);
-  clearMap();
-  refreshMap();
-});
-</script>
-</body>
-</html>
+async function loadEvents(){try{const rows=await loadCsv('events/sample_events.csv');events=rows.map(r=>({year:number(r.year||r.YEAR),text:r.description||r.event||r.name||r.text||''})).filter(e=>e.year!==null)}catch(e){events=[]}}
+function buildYears(){years=[...new Set(allData.map(d=>d.year))].sort((a,b)=>a-b);const min=years[0]??2010,max=years.at(-1)??2024;const s=document.getElementById('yearSlider');s.min=min;s.max=max;s.value=max;document.getElementById('yearDisplay').textContent=max}
+function populate(){const ds=document.getElementById('domainSelect'),vs=document.getElementById('variableSelect'),ps=document.getElementById('placeSelect');const domains=[...new Set(allData.map(d=>d.domain))].sort();ds.innerHTML='<option value="all">All Domains</option>'+domains.map(d=>`<option value="${d}">${domainLabels[d]||d}</option>`).join('');vs.innerHTML='<option value="all">All Variables</option>'+[...new Set(allData.map(d=>d.variable_id))].sort().map(v=>`<option value="${v}">${v}</option>`).join('');ps.innerHTML='<option value="all">All Places</option>'+[...places.values()].sort((a,b)=>a.name.localeCompare(b.name)).map(p=>`<option value="${p.id}">${p.name}</option>`).join('');document.getElementById('legendItems').innerHTML=domains.map(d=>`<div class="legend-item"><div class="legend-dot" style="background:${DOMAIN_COLORS[d]||DOMAIN_COLORS.unknown}"></div>${domainLabels[d]||d}</div>`).join('')}
+function initMap(){map=L.map('map',{zoomControl:false}).setView([25,15],2);L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:18}).addTo(map);L.control.zoom({position:'bottomright'}).addTo(map);fetch('https://unpkg.com/world-atlas@2/countries-110m.json').then(r=>r.json()).then(w=>L.geoJSON(topojson.feature(w,w.objects.countries),{style:{color:'#2a3a4a',weight:.5,fillColor:'#1a2535',fillOpacity:.3}}).addTo(map)).catch(()=>{})}
+function clearMap(){markers.forEach(m=>map.removeLayer(m));paths.forEach(p=>map.removeLayer(p));markers=[];paths=[]}
+function filtered(){const domain=document.getElementById('domainSelect').value,variable=document.getElementById('variableSelect').value,place=document.getElementById('placeSelect').value,year=number(document.getElementById('yearSlider').value);return allData.filter(d=>(year===null||d.year<=year)&&(domain==='all'||d.domain===domain)&&(variable==='all'||d.variable_id===variable)&&(place==='all'||d.place_id===place))}
+function latestByPlace(data){const m=new Map();data.forEach(d=>{const old=m.get(d.place_id);if(!old||d.year>old.year)m.set(d.place_id,d)});return m}
+function showObservations(data){const latest=latestByPlace(data);latest.forEach(d=>{const p=places.get(d.place_id);if(!p)return;const color=DOMAIN_COLORS[d.domain]||DOMAIN_COLORS.unknown;const marker=L.circleMarker([p.lat,p.lng],{radius:Math.max(5,Math.min(14,5+Math.log10(Math.abs(d.value||0)+1))),fillColor:color,color:color,weight:1,opacity:1,fillOpacity:.8}).addTo(map);marker.bindTooltip(`<h4>${p.name}</h4><div class="row"><span class="label">Variable:</span> ${d.variable_id}</div><div class="row"><span class="label">Value:</span> ${d.value??'—'} ${d.unit}</div><div class="row"><span class="label">Year:</span> ${d.year}</div><div class="row"><span class="label">Evidence:</span> ${d.evidence_type||'—'}</div><div class="row"><span class="label">Source:</span> ${d.source_id||'—'}</div>`);markers.push(marker)})}
+function showCoverage(data){const counts=new Map();data.forEach(d=>counts.set(d.place_id,(counts.get(d.place_id)||0)+1));counts.forEach((n,id)=>{const p=places.get(id);if(!p)return;const marker=L.circleMarker([p.lat,p.lng],{radius:Math.max(4,Math.min(12,4+Math.log10(n+1)*3)),fillColor:'#4fc3f7',color:'#4fc3f7',weight:1,fillOpacity:.65}).addTo(map);marker.bindTooltip(`<b>${p.name}</b><br>Observations: ${n}<br>Coverage is measurement presence, not proof of phenomenon presence.`);markers.push(marker)})}
+function showTemporalChange(data){const grouped=new Map();data.forEach(d=>{const k=`${d.domain}|${d.variable_id}`;if(!grouped.has(k))grouped.set(k,new Map());if(!grouped.get(k).has(d.year))grouped.get(k).set(d.year,[]);grouped.get(k).get(d.year).push(d)});grouped.forEach((ym,key)=>{const ordered=[...ym.entries()].sort((a,b)=>a[0]-b[0]);for(let i=1;i<ordered.length;i++){const a=ordered[i-1][1][0],b=ordered[i][1][0];if(a.place_id!==b.place_id)continue;const p=places.get(a.place_id);if(!p)continue;const poly=L.circleMarker([p.lat,p.lng],{radius:3,fillOpacity:.3,opacity:.5}).addTo(map);paths.push(poly)}})}
+function refresh(){clearMap();const data=filtered();const mode=document.getElementById('vizMode').value;if(mode==='observations')showObservations(data);if(mode==='origins')showCoverage(data);if(mode==='spread')showObservations(data);if(mode==='both'){showCoverage(data);showObservations(data)}updateStats(data);showEvents()}
+function updateStats(data){document.getElementById('varCount').textContent=new Set(data.map(d=>d.variable_id)).size;document.getElementById('placeCount').textContent=new Set(data.map(d=>d.place_id)).size;document.getElementById('obsCount').textContent=data.length.toLocaleString();const ys=[...new Set(data.map(d=>d.year))].sort((a,b)=>a-b);document.getElementById('timeRange').textContent=ys.length?`${ys[0]}-${ys.at(-1)}`:'—'}
+function showEvents(){const y=number(document.getElementById('yearSlider').value);document.getElementById('eventsList').innerHTML=events.filter(e=>e.year<=y).sort((a,b)=>b.year-a.year).map(e=>`<div class="event-item"><span class="year">${e.year}</span> <span class="text">${e.text}</span></div>`).join('')}
+function animate(){if(!years.length)return;let i=0;const btn=document.getElementById('animateBtn');btn.textContent='⏸ Playing…';const interval=setInterval(()=>{if(i>=years.length){clearInterval(interval);btn.textContent='▶ Animate Time';return}document.getElementById('yearSlider').value=years[i++];document.getElementById('yearDisplay').textContent=document.getElementById('yearSlider').value;refresh()},700)}
+(async function(){initMap();try{await loadProjectData();populate();refresh()}catch(e){console.error(e);setStatus(`Data load failed: ${e.message}`,'warn');populate();refresh()}
+ document.getElementById('domainSelect').addEventListener('change',refresh);document.getElementById('variableSelect').addEventListener('change',refresh);document.getElementById('placeSelect').addEventListener('change',refresh);document.getElementById('vizMode').addEventListener('change',refresh);document.getElementById('yearSlider').addEventListener('input',function(){document.getElementById('yearDisplay').textContent=this.value;refresh()});document.getElementById('animateBtn').addEventListener('click',animate);document.getElementById('resetBtn').addEventListener('click',()=>{map.setView([25,15],2);document.getElementById('yearSlider').value=years.at(-1)??2024;document.getElementById('yearDisplay').textContent=document.getElementById('yearSlider').value;refresh()})})();
+</script></body></html>
