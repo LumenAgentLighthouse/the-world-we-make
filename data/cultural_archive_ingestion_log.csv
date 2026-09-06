@@ -1,5 +1,7 @@
 ingestion_id,source_id,access_date,status,records_added,target_file,method,provenance_note
 ING_LOC_JB_001,LOC_NATIONAL_JUKEBOX,2026-09-06,ingested,10,data/cultural_archive_loc_music_seed.csv,LOC JSON item metadata cross-checked against item pages,Concrete recording observations; item URLs/IDs retained in record_id
+ING_LOC_JB_002,LOC_NATIONAL_JUKEBOX,2026-09-06,ingested,12,data/cultural_archive_loc_music_seed.csv,LOC item pages cross-checked,Concrete recording observations spanning 1907 and 1915; titles locations contributors and genres retained in notes
+ING_LOC_JB_COV_001,LOC_NATIONAL_JUKEBOX,2026-09-06,ingested,38,data/cultural_archive_loc_music_coverage.csv,LOC browse-all-recordings facets,Annual archive counts for 1900-1925 plus current label and genre facet counts; these describe surviving/represented archive records rather than production totals
 ING_MUSICBRAINZ_001,MUSICBRAINZ,2026-09-06,source_verified,0,,API and bulk dump availability verified,Awaiting bulk/API harvest; no values fabricated
 ING_DISCOGS_001,DISCOGS,2026-09-06,source_registered,0,,Source/data access registered,No records fabricated pending compliant data acquisition
 ING_NYPL_001,NYPL_DIGITAL_COLLECTIONS,2026-09-06,source_registered,0,,API structure and machine-readable scale verified,Current API requires authentication and is being deprecated; retain source for future compliant harvesting
