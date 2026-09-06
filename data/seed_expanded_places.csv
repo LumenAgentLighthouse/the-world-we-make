@@ -1,0 +1,54 @@
+place_id,country,place_name,place_type,notes
+AFG,Afghanistan,Afghanistan,country,ISO-like project code
+MNG,Mongolia,Mongolia,country,ISO-like project code
+FJI,Fiji,Fiji,country,ISO-like project code
+USA,United States,United States,country,ISO-like project code
+GEO,Georgia,Georgia,country,ISO-like project code
+LCA,Saint Lucia,Saint Lucia,country,ISO-like project code
+OMN,Oman,Oman,country,ISO-like project code
+BHS,Bahamas,Bahamas,country,ISO-like project code
+CIV,Cote d'Ivoire,Cote d'Ivoire,country,ISO-like project code
+BRA,Brazil,Brazil,country,ISO-like project code
+CAN,Canada,Canada,country,ISO-like project code
+CHN,China,China,country,ISO-like project code
+DEU,Germany,Germany,country,ISO-like project code
+FRA,France,France,country,ISO-like project code
+GBR,United Kingdom,United Kingdom,country,ISO-like project code
+IND,India,India,country,ISO-like project code
+IDN,Indonesia,Indonesia,country,ISO-like project code
+JPN,Japan,Japan,country,ISO-like project code
+KOR,South Korea,South Korea,country,ISO-like project code
+MEX,Mexico,Mexico,country,ISO-like project code
+NGA,Nigeria,Nigeria,country,ISO-like project code
+PAK,Pakistan,Pakistan,country,ISO-like project code
+ZAF,South Africa,South Africa,country,ISO-like project code
+ETH,Ethiopia,Ethiopia,country,ISO-like project code
+EGY,Egypt,Egypt,country,ISO-like project code
+BGD,Bangladesh,Bangladesh,country,ISO-like project code
+VNM,Vietnam,Vietnam,country,ISO-like project code
+THA,Thailand,Thailand,country,ISO-like project code
+PHL,Philippines,Philippines,country,ISO-like project code
+MYS,Malaysia,Malaysia,country,ISO-like project code
+AUT,Austria,Austria,country,ISO-like project code
+BEL,Belgium,Belgium,country,ISO-like project code
+COL,Colombia,Colombia,country,ISO-like project code
+DNK,Denmark,Denmark,country,ISO-like project code
+FIN,Finland,Finland,country,ISO-like project code
+GRC,Greece,Greece,country,ISO-like project code
+HUN,Hungary,Hungary,country,ISO-like project code
+IRL,Ireland,Ireland,country,ISO-like project code
+ISR,Israel,Israel,country,ISO-like project code
+ITA,Italy,Italy,country,ISO-like project code
+NLD,Netherlands,Netherlands,country,ISO-like project code
+POL,Poland,Poland,country,ISO-like project code
+PRT,Portugal,Portugal,country,ISO-like project code
+SAU,Saudi Arabia,Saudi Arabia,country,ISO-like project code
+ESP,Spain,Spain,country,ISO-like project code
+SWE,Sweden,Sweden,country,ISO-like project code
+CHE,Switzerland,Switzerland,country,ISO-like project code
+TUR,Turkey,Turkey,country,ISO-like project code
+ARE,United Arab Emirates,United Arab Emirates,country,ISO-like project code
+NZL,New Zealand,New Zealand,country,ISO-like project code
+ZWE,Zimbabwe,Zimbabwe,country,ISO-like project code
+RUS,Russia,Russia,country,ISO-like project code
+AUS,Australia,Australia,country,ISO-like project code
