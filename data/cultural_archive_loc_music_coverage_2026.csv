@@ -1,0 +1,36 @@
+observation_id,source_id,time_id,variable_id,value_numeric,unit,category,subcategory,evidence_type,confidence,notes
+LOC_JB_COV_1900,LOC_NATIONAL_JUKEBOX,1900,ARCHIVE_RECORD_COUNT,18,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1900
+LOC_JB_COV_1901,LOC_NATIONAL_JUKEBOX,1901,ARCHIVE_RECORD_COUNT,456,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1901
+LOC_JB_COV_1902,LOC_NATIONAL_JUKEBOX,1902,ARCHIVE_RECORD_COUNT,298,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1902
+LOC_JB_COV_1903,LOC_NATIONAL_JUKEBOX,1903,ARCHIVE_RECORD_COUNT,231,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1903
+LOC_JB_COV_1904,LOC_NATIONAL_JUKEBOX,1904,ARCHIVE_RECORD_COUNT,605,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1904
+LOC_JB_COV_1905,LOC_NATIONAL_JUKEBOX,1905,ARCHIVE_RECORD_COUNT,497,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1905
+LOC_JB_COV_1906,LOC_NATIONAL_JUKEBOX,1906,ARCHIVE_RECORD_COUNT,592,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1906
+LOC_JB_COV_1907,LOC_NATIONAL_JUKEBOX,1907,ARCHIVE_RECORD_COUNT,474,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1907
+LOC_JB_COV_1908,LOC_NATIONAL_JUKEBOX,1908,ARCHIVE_RECORD_COUNT,769,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1908
+LOC_JB_COV_1909,LOC_NATIONAL_JUKEBOX,1909,ARCHIVE_RECORD_COUNT,587,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1909
+LOC_JB_COV_1910,LOC_NATIONAL_JUKEBOX,1910,ARCHIVE_RECORD_COUNT,764,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1910
+LOC_JB_COV_1911,LOC_NATIONAL_JUKEBOX,1911,ARCHIVE_RECORD_COUNT,1022,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1911
+LOC_JB_COV_1912,LOC_NATIONAL_JUKEBOX,1912,ARCHIVE_RECORD_COUNT,1066,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1912
+LOC_JB_COV_1913,LOC_NATIONAL_JUKEBOX,1913,ARCHIVE_RECORD_COUNT,1176,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1913
+LOC_JB_COV_1914,LOC_NATIONAL_JUKEBOX,1914,ARCHIVE_RECORD_COUNT,942,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1914
+LOC_JB_COV_1915,LOC_NATIONAL_JUKEBOX,1915,ARCHIVE_RECORD_COUNT,1135,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1915
+LOC_JB_COV_1916,LOC_NATIONAL_JUKEBOX,1916,ARCHIVE_RECORD_COUNT,1660,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1916
+LOC_JB_COV_1917,LOC_NATIONAL_JUKEBOX,1917,ARCHIVE_RECORD_COUNT,1576,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1917
+LOC_JB_COV_1918,LOC_NATIONAL_JUKEBOX,1918,ARCHIVE_RECORD_COUNT,573,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1918
+LOC_JB_COV_1919,LOC_NATIONAL_JUKEBOX,1919,ARCHIVE_RECORD_COUNT,566,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1919
+LOC_JB_COV_1920,LOC_NATIONAL_JUKEBOX,1920,ARCHIVE_RECORD_COUNT,396,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1920
+LOC_JB_COV_1921,LOC_NATIONAL_JUKEBOX,1921,ARCHIVE_RECORD_COUNT,415,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1921
+LOC_JB_COV_1922,LOC_NATIONAL_JUKEBOX,1922,ARCHIVE_RECORD_COUNT,759,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1922
+LOC_JB_COV_1923,LOC_NATIONAL_JUKEBOX,1923,ARCHIVE_RECORD_COUNT,928,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1923
+LOC_JB_COV_1924,LOC_NATIONAL_JUKEBOX,1924,ARCHIVE_RECORD_COUNT,880,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1924
+LOC_JB_COV_1925,LOC_NATIONAL_JUKEBOX,1925,ARCHIVE_RECORD_COUNT,156,records,recorded_music,annual_archive_coverage,archive_count,high,National Jukebox browse facet count for recordings dated 1925
+LOC_JB_COV_TOTAL,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,18566,records,recorded_music,current_collection,archive_count,high,Current National Jukebox browse page reports 18566 audio recordings; this is archive coverage not historical production
+LOC_JB_COV_VICTOR,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,13121,records,recorded_music,label_coverage,archive_count,high,Current browse facet count for Victor recordings
+LOC_JB_COV_COLUMBIA,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,5416,records,recorded_music,label_coverage,archive_count,high,Current browse facet count for Columbia recordings
+LOC_JB_COV_POPULAR,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,6402,records,recorded_music,genre_coverage,archive_count,high,Current browse facet count for Popular Music
+LOC_JB_COV_ETHNIC,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,3015,records,recorded_music,genre_coverage,archive_count,high,Current browse facet count for Ethnic Music
+LOC_JB_COV_OPERA,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,1558,records,recorded_music,genre_coverage,archive_count,high,Current browse facet count for Opera
+LOC_JB_COV_CLASSICAL,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,1456,records,recorded_music,genre_coverage,archive_count,high,Current browse facet count for Classical Music
+LOC_JB_COV_THEATER,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,810,records,recorded_music,genre_coverage,archive_count,high,Current browse facet count for Musical Theater
+LOC_JB_COV_RAGTIME,LOC_NATIONAL_JUKEBOX,2026,ARCHIVE_RECORD_COUNT,654,records,recorded_music,genre_coverage,archive_count,high,Current browse facet count for Ragtime Jazz and More
