@@ -10,6 +10,8 @@ This directory contains ingested observations and source manifests.
 
 `seed_gdp_per_capita_2024_ppp.csv` adds a wider 2024 cross-country GDP-per-capita series in constant international dollars at 2021 prices, using World Bank WDI data as presented by Our World in Data. The current seed is intentionally small but geographically broader than the original seven-country seed.
 
+`seed_expanded_observations.csv` adds a broader country-level connectivity and energy layer: Internet-user share for the latest World Bank/ITU observations and renewable electricity generation share from the current Our World in Data electricity-mix dataset. It covers the expanded country registry and is directly consumable by World Lens.
+
 The seed files are not representative samples of the world. They are ingestion exercises intended to prove that observations can be stored with source, definition, unit, time, geography, uncertainty and methodological caveats intact before scaling collection.
 
 ## Rules
