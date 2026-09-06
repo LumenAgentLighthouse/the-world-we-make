@@ -1,0 +1,15 @@
+relationship_type_id,name,definition,directionality,unit,notes
+REL-001,migration_flow,People or households moving from one place or population system to another,DIRECTED,people or households,Use only where movement is measured or defensibly inferred.
+REL-002,trade_flow,Goods or services moving from one entity or place to another,DIRECTED,quantity or value,Preserve commodity/service type and measurement basis in domain data.
+REL-003,information_flow,Information or attention moving between entities or places,DIRECTED,frequency or volume,Do not equate attention with influence or physical presence.
+REL-004,cultural_influence,Documented or hypothesised influence of one cultural form or system on another,DIRECTED,,Influence is not automatically causal.
+REL-005,cultural_derivation,A cultural variant materially derived from another variant,DIRECTED,,Use with cultural variant provenance and transformation evidence.
+REL-006,dependency,One entity materially depends on another for a specified function or resource,DIRECTED,,Record the dependency basis and alternatives where known.
+REL-007,competition,Entities compete for a specified resource market audience or capacity,DIRECTED,,Direction may be asymmetric even where competition is reciprocal.
+REL-008,collaboration,Entities cooperate toward a shared activity or output,UNDIRECTED,,Represent directed roles separately where evidence requires it.
+REL-009,infrastructure_connection,Infrastructure directly connects two places or systems,DIRECTED,,Direction may represent flow capacity rather than ownership.
+REL-010,institutional_link,Formal or informal institutional relationship between entities,DIRECTED,,Do not assume legal form from a generic institutional link.
+REL-011,beneficiary_flow,A service or intervention provides a direct or indirect benefit to an entity or population,DIRECTED,,Use with intervention and beneficiary layers.
+REL-012,event_disruption,An event interrupts or materially changes an existing relationship,DIRECTED,,Prefer relationship_events when the event linkage is explicit.
+REL-013,supply_chain,An entity supplies an input to another entity,DIRECTED,,Preserve material/service identity and stage in domain data.
+REL-014,return_flow,A flow returns from a destination to an origin or prior node,DIRECTED,,Useful for cultural feedback and reciprocal material/economic flows.
