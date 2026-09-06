@@ -1,0 +1,27 @@
+variable_id,domain,variable_name,definition,unit,preferred_frequency,sensitivity,causal_role,known_confounders,notes
+POP_TOTAL,population,Population total,Total population of the reporting country or economy,persons,annual,low,context,age structure migration boundary changes,Do not substitute households or resident population under a different definition
+GDP_PC_CURRENT_USD,economy,GDP per capita current US dollars,GDP divided by population at current US dollar values,USD_per_person,annual,low,context,exchange rates price levels population revisions,Not a welfare measure
+GDP_PC_PPP_2021_INTL,economy,GDP per capita PPP constant 2021 international dollars,GDP divided by population in constant 2021 international dollars,international_$_2021_prices,annual,low,context,price levels PPP revisions,Not a welfare measure
+LIFE_EXPECTANCY,health,Life expectancy at birth total,Expected years a newborn would live under prevailing mortality rates,years,annual,low,outcome,age structure mortality patterns revisions,Not individual lifespan or healthcare quality
+UNEMPLOYMENT_RATE,economy,Unemployment rate,Share of labour force without work but seeking and available,percent,annual,low,outcome,labour-force definition survey methods informal work,Use consistent ILO modelled estimates
+EMPLOYMENT_RATE,employment,Employment rate,Share of working-age population employed,percent,annual,low,outcome,labour-force definition survey methods informal work,Not vacancies or advertised jobs
+JOB_VACANCIES,employment,Job vacancies,Number of job vacancies per market,count,annual,low,context,hiring cycles labour turnover,Not filled jobs
+ADVERTISED_JOBS,employment,Advertised jobs,Number of publicly advertised jobs,count,annual,low,context,recruitment patterns,Not filled jobs
+ELECTRICITY_ACCESS_SHARE,power,Share of population with access to electricity,Population share with basic electricity access,percent,annual,low,context,infrastructure definitions rural urban coverage estimation,Not reliability or affordability
+FIXED_BROADBAND_SUBSCRIPTIONS,technology,Fixed broadband subscriptions,Fixed broadband subscriptions meeting minimum speed definition,subscriptions,annual,low,context,population household composition technology definitions,Not unique users
+FIXED_BROADBAND_SUBSCRIPTIONS_PER_100,technology,Fixed broadband subscriptions per 100 people,Subscriptions divided by population,subscriptions_per_100,annual,low,context,population revisions sharing definitions,Not internet-user share
+HOUSING_STOCK,housing,Housing stock,Dwelling units counted as housing stock,units,decennial,low,context,definitions boundary changes,Not occupied or available housing
+OCCUPIED_HOUSING,housing,Occupied housing,Dwelling units occupied by households,units,decennial,low,context,census coverage vacancy rates,Not available housing
+AVAILABLE_HOUSING,housing,Available housing,Dwelling units available for habitation,units,decennial,low,context,census vacancy rates,Not housing stock
+CRIME_TOTAL,crime,Crime occurring,Estimated total criminal acts,incidents,annual,medium,context,survey coverage recording changes,Not reported or recorded crime
+CRIME_REPORTED,crime,Reported crime,Criminal acts reported to authorities,incidents,annual,medium,context,reporting willingness,Not crime occurring
+CRIME_RECORDED,crime,Recorded crime,Criminal acts recorded by police or justice system,incidents,annual,medium,context,recording practices,Not reported crime
+MORTALITY_RATE,health,Mortality rate,Deaths per 1000 population per year,per_1000,annual,low,outcome,death registration coverage,Not disease incidence
+CANCER_INCIDENCE,health,Cancer incidence,New cancer cases per population,count_per_100000,annual,low,outcome,coding changes registration coverage,Not diagnosis or prevalence
+PREVALENCE_RATE,health,Prevalence rate,Existing cases in population at a point in time,percent,annual,low,outcome,coding changes case definitions,Not incidence
+NET_MIGRATION,population,Net migration rate,Net migrants per 1000 population per year,per_1000,annual,low,context,migrant definition boundary changes,Not immigration or emigration alone
+FERTILITY_RATE,population,Fertility rate,Births per 1000 women of reproductive age,per_1000,annual,low,context,age structure reproductive-age definition,Not total births
+HHEALTH_EXPENDITURE,health,Health expenditure per capita,Current health expenditure per capita in USD,USD_per_person,annual,low,context,healthcare financing definitions,Not health outcomes
+EDUCATION_ENROLLMENT,education,School enrollment rate,Share of eligible population enrolled in education,percent,annual,low,context,education system differences,Not learning outcomes
+AGRICULTURE_PRODUCTION,agriculture,Agricultural production index,Agricultural production index, index,annual,low,context,weather climate variability,Not food security
+ENVIRONMENT_CO2,environment,CO2 emissions per capita,Production-based CO2 emissions per capita,metric_tons_per_person,annual,low,context,energy mix reporting differences,Not consumption-based emissions
