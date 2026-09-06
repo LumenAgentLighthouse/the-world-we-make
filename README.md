@@ -20,6 +20,14 @@ Culture, people, places, economies, institutions, environments, information and 
 
 Early architecture and specification stage. See [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md).
 
+## Spherical map
+
+The project includes an observer-centred, inside-out spherical map: [`spherical_map_fixed.html`](spherical_map_fixed.html).
+
+The fixed version preserves the intended spherical lens while correcting the interaction layer and loading the project's existing map dataset dynamically. It includes working drag/orbit controls, scroll zoom, hover inspection, resize handling and a time slider. The canonical geographic coordinates remain the data layer; the inside-out representation is only the visual lens.
+
+The original [`spherical_map.html`](spherical_map.html) is retained as the earlier implementation for comparison and provenance.
+
 ## Autonomous maintenance
 
 The project is intentionally designed to be improved by authorised human contributors and autonomous AI agents. Routine architecture, documentation, schema, methodology and audit improvements may proceed without requiring step-by-step direction when their intent is clear.
