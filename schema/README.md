@@ -19,6 +19,27 @@ The project uses a long-form, provenance-preserving model. A single wide table i
 ### Sources
 `source_id`, `publisher`, `dataset_name`, `url`, `access_date`, `geographic_coverage`, `temporal_coverage`, `method`, `license`, `known_biases`, `definition_notes`
 
+## Interaction graph
+
+`schema/interactions.sql` adds a general relationship layer so the project can represent connections between otherwise separate entity systems. Relationships are first-class, time-bounded and provenance-aware objects rather than being inferred only from co-occurring observations.
+
+Core fields include:
+
+- subject entity type/id
+- relationship type
+- object entity type/id
+- validity interval and observation time
+- optional strength and unit
+- evidence, source and confidence
+- explicit relationship status
+- mechanism, alternatives and caveats
+
+The graph is deliberately polymorphic because useful edges may connect places, organisations, cultural variants, infrastructure, events, populations and other domain entities. Direction, reciprocity, disappearance, reappearance, branching and cycles should remain representable.
+
+An interaction is **not automatically a causal claim**. Causal conclusions belong in the analysis layer and must retain their evidence and transformations.
+
+See [`../methodology/interactions_and_networks.md`](../methodology/interactions_and_networks.md).
+
 ## Domain layers
 
 The schema is expected to expand through linked domain tables rather than forcing every domain into the generic observation table. Initial domains include:
@@ -51,7 +72,7 @@ The schema is expected to expand through linked domain tables rather than forcin
 
 `event_id`, `place_id`, `start_date`, `end_date`, `event_type`, `description`, `scale`, `actor`, `population_affected`, `expected_effect`, `direct_effect`, `observed_effect`, `source_id`, `confidence`
 
-Events are change points, not automatic causal explanations.
+Events are change points, not automatic causal explanations. They can also be linked to relationships through the interaction graph.
 
 ## Cultural flows
 
