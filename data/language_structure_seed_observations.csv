@@ -1,0 +1,7 @@
+observation_id,language_id,language_name,iso6393,glottocode,family,feature_id,feature_name,value,source_id,evidence_type,confidence,caveat
+LANGSTR_0001,eng,English,eng,stan1293,Indo-European,81A,Order of Subject Object and Verb,SVO,WALS,typological_observation,high,WALS value describes dominant order in its defined transitive-clause sample
+LANGSTR_0002,fre,French,fra,stan1290,Indo-European,81A,Order of Subject Object and Verb,SVO,WALS,typological_observation,high,WALS value describes dominant order in its defined transitive-clause sample
+LANGSTR_0003,jpn,Japanese,jpn,nucl1643,Japonic,81A,Order of Subject Object and Verb,SOV,WALS,typological_observation,high,WALS value describes dominant order in its defined transitive-clause sample
+LANGSTR_0004,hin,Hindi,hin,kuma1276,Indo-European,81A,Order of Subject Object and Verb,SOV,WALS,typological_observation,medium,Representative WALS value; verify current language identifier during bulk ingestion
+LANGSTR_0005,spa,Spanish,spa,stan1288,Indo-European,81A,Order of Subject Object and Verb,SVO,WALS,typological_observation,high,WALS comparative combination tables include Spanish in SVO group
+LANGSTR_0006,swa,Swahili,swa,swah1254,Atlantic-Congo,81A,Order of Subject Object and Verb,SVO,WALS,typological_observation,high,WALS comparative combination tables include Swahili in SVO group
