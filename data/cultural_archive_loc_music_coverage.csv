@@ -1,0 +1,39 @@
+observation_id,source_id,time_id,place,variable_id,value_numeric,unit,evidence_type,confidence,notes
+LOC_JB_COV_0001,LOC_NATIONAL_JUKEBOX,1900,United States,ARCHIVE_RECORD_COUNT,18,records,collection_facet,high,National Jukebox browse facet reports 18 recordings dated 1900
+LOC_JB_COV_0002,LOC_NATIONAL_JUKEBOX,1901,United States,ARCHIVE_RECORD_COUNT,456,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0003,LOC_NATIONAL_JUKEBOX,1902,United States,ARCHIVE_RECORD_COUNT,298,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0004,LOC_NATIONAL_JUKEBOX,1903,United States,ARCHIVE_RECORD_COUNT,231,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0005,LOC_NATIONAL_JUKEBOX,1904,United States,ARCHIVE_RECORD_COUNT,605,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0006,LOC_NATIONAL_JUKEBOX,1905,United States,ARCHIVE_RECORD_COUNT,497,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0007,LOC_NATIONAL_JUKEBOX,1906,United States,ARCHIVE_RECORD_COUNT,592,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0008,LOC_NATIONAL_JUKEBOX,1907,United States,ARCHIVE_RECORD_COUNT,474,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0009,LOC_NATIONAL_JUKEBOX,1908,United States,ARCHIVE_RECORD_COUNT,769,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0010,LOC_NATIONAL_JUKEBOX,1909,United States,ARCHIVE_RECORD_COUNT,587,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0011,LOC_NATIONAL_JUKEBOX,1910,United States,ARCHIVE_RECORD_COUNT,764,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0012,LOC_NATIONAL_JUKEBOX,1911,United States,ARCHIVE_RECORD_COUNT,1022,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0013,LOC_NATIONAL_JUKEBOX,1912,United States,ARCHIVE_RECORD_COUNT,1066,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0014,LOC_NATIONAL_JUKEBOX,1913,United States,ARCHIVE_RECORD_COUNT,1176,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0015,LOC_NATIONAL_JUKEBOX,1914,United States,ARCHIVE_RECORD_COUNT,942,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0016,LOC_NATIONAL_JUKEBOX,1915,United States,ARCHIVE_RECORD_COUNT,1135,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0017,LOC_NATIONAL_JUKEBOX,1916,United States,ARCHIVE_RECORD_COUNT,1660,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0018,LOC_NATIONAL_JUKEBOX,1917,United States,ARCHIVE_RECORD_COUNT,1576,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0019,LOC_NATIONAL_JUKEBOX,1918,United States,ARCHIVE_RECORD_COUNT,573,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0020,LOC_NATIONAL_JUKEBOX,1919,United States,ARCHIVE_RECORD_COUNT,566,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0021,LOC_NATIONAL_JUKEBOX,1920,United States,ARCHIVE_RECORD_COUNT,396,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0022,LOC_NATIONAL_JUKEBOX,1921,United States,ARCHIVE_RECORD_COUNT,415,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0023,LOC_NATIONAL_JUKEBOX,1922,United States,ARCHIVE_RECORD_COUNT,759,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0024,LOC_NATIONAL_JUKEBOX,1923,United States,ARCHIVE_RECORD_COUNT,928,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0025,LOC_NATIONAL_JUKEBOX,1924,United States,ARCHIVE_RECORD_COUNT,880,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0026,LOC_NATIONAL_JUKEBOX,1925,United States,ARCHIVE_RECORD_COUNT,156,records,collection_facet,high,National Jukebox browse facet
+LOC_JB_COV_0027,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_RECORD_COUNT,18566,records,collection_facet,high,Current National Jukebox browse page reports 18,566 audio recordings
+LOC_JB_COV_0028,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_RECORD_COUNT,13121,records,collection_facet,high,Current browse facet reports 13,121 Victor-labelled recordings
+LOC_JB_COV_0029,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_RECORD_COUNT,5416,records,collection_facet,high,Current browse facet reports 5,416 Columbia-labelled recordings
+LOC_JB_COV_0030,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,6402,records,collection_facet,high,Popular Music genre facet
+LOC_JB_COV_0031,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,3015,records,collection_facet,high,Ethnic Music genre facet
+LOC_JB_COV_0032,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,1558,records,collection_facet,high,Opera genre facet
+LOC_JB_COV_0033,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,1456,records,collection_facet,high,Classical Music genre facet
+LOC_JB_COV_0034,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,810,records,collection_facet,high,Musical Theater genre facet
+LOC_JB_COV_0035,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,804,records,collection_facet,high,Ethnic Characterizations genre facet
+LOC_JB_COV_0036,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,727,records,collection_facet,high,Humorous Songs genre facet
+LOC_JB_COV_0037,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,654,records,collection_facet,high,Ragtime Jazz and More genre facet
+LOC_JB_COV_0038,LOC_NATIONAL_JUKEBOX,ALL,United States,ARCHIVE_GENRE_RECORD_COUNT,553,records,collection_facet,high,Religious genre facet
