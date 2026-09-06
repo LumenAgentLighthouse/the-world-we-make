@@ -1,0 +1,55 @@
+variable_id,domain,variable_name,definition,unit,preferred_frequency,sensitivity,causal_role,known_confounders,notes
+POP_TOTAL,population,Population total,Total population of the reporting country or economy,persons,annual,low,context,age structure migration boundary changes,Do not substitute households or resident population under a different definition
+GDP_PC_CURRENT_USD,economy,GDP per capita current US dollars,Gross domestic product divided by population at current US dollar values,USD_per_person,annual,low,context,exchange rates price levels population revisions,Nominal monetary measure not a welfare measure
+GDP_PC_PPP_2021_INTL,economy,GDP per capita PPP constant 2021 international dollars,Gross domestic product divided by population in constant 2021 international dollars,international_$_2021_prices,annual,low,context,price levels purchasing power parity revisions,Nominal PPP measure not a welfare measure
+LIFE_EXPECTANCY,health,Life expectancy at birth total,Expected years a newborn would live under prevailing age-specific mortality rates,years,annual,low,outcome,age structure mortality patterns data revisions,Do not interpret as individual lifespan or direct healthcare quality
+UNEMPLOYMENT_RATE,economy,Unemployment rate,Share of labour force without work but actively looking and available to start soon,percent,annual,low,outcome,labour-force definition survey methods informal work seasonal work,Use modelled ILO estimates consistently
+EMPLOYMENT_RATE,employment,Employment rate,Share of working-age population that is employed,percent,annual,low,outcome,labour-force definition survey methods informal work,Do not substitute vacancies or advertised jobs
+JOB_VACANCIES,employment,Job vacancies,Number of job vacancies per market,count,annual,low,context,hiring cycles labour turnover,Not equivalent to filled jobs
+ADVERTISED_JOBS,employment,Advertised jobs,Number of jobs advertised publicly,count,annual,low,context,recruitment patterns,Not equivalent to filled jobs
+ELECTRICITY_ACCESS_SHARE,power,Share of population with access to electricity,Share of population with an electricity source capable of basic service,percent,annual,low,context,infrastructure definitions rural urban coverage estimation,Not electricity reliability or affordability
+FIXED_BROADBAND_SUBSCRIPTIONS,technology,Fixed broadband subscriptions,Total fixed broadband subscriptions meeting international minimum speed definition,subscriptions,annual,low,context,population household composition technology definitions,Count is not unique users
+FIXED_BROADBAND_SUBSCRIPTIONS_PER_100,technology,Fixed broadband subscriptions per 100 people,Fixed broadband subscriptions divided by population,subscriptions_per_100,annual,low,context,population revisions subscription sharing technology definitions,Not internet-user share
+HOUSING_STOCK,housing,Housing stock,Dwelling units counted as housing stock,units,decennial,low,context,definitions boundary changes,Not occupied or available housing
+OCCUPIED_HOUSING,housing,Occupied housing,Dwelling units occupied by households,units,decennial,low,context,census coverage vacancy rates,Not available housing
+AVAILABLE_HOUSING,housing,Available housing,Dwelling units available for habitation,units,decennial,low,context,census vacancy rates,Not housing stock
+CRIME_TOTAL,crime,Crime occurring,Estimated total criminal acts,incidents,annual,medium,context,survey coverage recording changes,Do not substitute reported or recorded crime
+CRIME_REPORTED,crime,Reported crime,Criminal acts reported to authorities,incidents,annual,medium,context,reporting willingness,Not equivalent to crime occurring
+CRIME_RECORDED,crime,Recorded crime,Criminal acts recorded by police or justice system,incidents,annual,medium,context,recording practices,Not equivalent to reported crime
+MORTALITY_RATE,health,Mortality rate,Deaths per 1,000 population per year,per_1000,annual,low,outcome,death registration coverage,Not disease-specific incidence
+CANCER_INCIDENCE,health,Cancer incidence,New cancer cases per 100000 population,count_per_100000,annual,low,outcome,coding changes registration coverage,Do not substitute diagnosis or prevalence
+PREVALENCE_RATE,health,Prevalence rate,Existing cases in population at a point in time,percent,annual,low,outcome,coding changes case definitions,Do not interpret as incidence
+ALCOHOL_CONSUMPTION,drugs_and_alcohol,Alcohol consumption per capita,Total pure alcohol consumption per adult,litres_per_adult,annual,medium,outcome,reporting differences cultural norms,Not alcohol-related harm or dependency
+DRUG_OVERDOSE,drugs_and_alcohol,Drug overdose deaths per 100000 population,Drug overdose deaths per population,per_100000,annual,high,outcome,drug definition reporting changes,Not seizures or consumption
+DRUG_TREATMENT,drugs_and_alcohol,Drug treatment admissions,People entering drug treatment per year,count,annual,low,context,reporting changes access barriers,Not consumption or treatment need
+DRUG_SEIZURES,drugs_and_alcohol,Drug seizures,Quantity of illegal drugs seized by law enforcement,kilograms,annual,medium,context,enforcement intensity reporting changes,Not consumption or production
+SCHOOL_ENROLLMENT_PRIMARY,education,Primary school enrollment rate,Share of eligible population enrolled in primary education,percent,annual,low,context,education system differences enrollment age,Not learning outcomes
+SCHOOL_ENROLLMENT_SECONDARY,education,Secondary school enrollment rate,Share of eligible population enrolled in secondary education,percent,annual,low,context,education system differences enrollment age,Not learning outcomes
+SCHOOL_ENROLLMENT_TERTIARY,education,Tertiary school enrollment rate,Share of eligible population enrolled in tertiary education,percent,annual,low,context,education system differences enrollment age,Not learning outcomes
+TEACHER_PUPIL_RATIO,education,Teacher-pupil ratio,Number of pupils per primary teacher,pupils_per_teacher,annual,low,context,school size urban rural,Not teacher quality
+LITERACY_RATE,education,Literacy rate,Share of population aged 15+ able to read and write,percent,annual,low,context,definition of literacy,Not enrollment
+UNEMPLOYMENT_YOUNG,education,Youth unemployment rate,Share of young people 15-24 without work but seeking employment,percent,annual,low,outcome,education system differences,Not adult unemployment
+VEHICLE_KM_PER_CAPITA,transport,Vehicle-kilometres travelled per capita,Total vehicle distance travelled per capita,kilometres_per_person,annual,medium,context,population density urban rural,Not vehicle ownership
+PUBLIC_TRANSIT_USE,transport,Public transit use,Share of commuter trips made via public transit,percent,annual,low,context,transit system coverage,Not availability
+ROAD_DENSITY,transport,Road density,Road network length per unit of land area,kilometres_per_square_kilometre,annual,low,context,rural urban definitions,Not road quality
+AIR_PASSENGERS,transport,Air passengers handled,Total passengers handled at airports,passengers,annual,low,context,hub vs non-hub airports,Not mobility access
+AGRICULTURE_PRODUCTION_INDEX,agriculture,Agricultural production index,Agricultural production index with 2004-2006 base,index,annual,low,context,weather climate variability,Not food security
+FOOD_EXPOSURE,agriculture,Food exposure (calories per capita),Available food supply per capita per day,kilocalories_per_person_per_day,annual,low,context,food waste trade,Not food consumption
+FOOD_IMPORT_SHARE,agriculture,Food import share,Share of food supply that is imported,percent,annual,low,context,food self-sufficiency definitions,Not food insecurity
+FERTILITY_RATE,population,Fertility rate,Births per 1000 women of reproductive age,per_1000,annual,low,context,age structure definition reproductive age,Not total births
+AGEING_INDEX,population,Old-age dependency ratio,Ratio of population aged 65+ to population aged 15-64,ratio,annual,low,context,migration patterns retirement age,Not life expectancy
+PATENTS_PER_CAPITA,technology,Patents per capita,Patent applications per 1000 population,patents_per_1000,annual,low,context,patent law differences definitions,Not innovation capacity
+RD_EXPENDITURE,technology,R&D expenditure,Research and development expenditure as percentage of GDP,percent,annual,low,context,sector definitions,Not innovation output
+INTERNET_USERS,technology,Internet users,Share of population using the internet,percent,annual,low,context,definition of internet use device access,Not internet availability
+MOBILE_SUBSCRIPTIONS,technology,Mobile cellular subscriptions,Mobile subscriptions per 100 people,subscriptions_per_100,annual,low,context,multiple subscriptions per person,Not unique mobile users
+SEARCH_INTEREST,place_engagement,Search interest,Place-related search query volume per 100 population,relative_index,monthly,low,context,platform changes seasonality,Not attention or consumption
+LOCAL_JOURNALISM_COUNT,place_engagement,Local journalism outlets,Local journalism outlets per 100000 population,outlets,annual,medium,context,definition of journalism outlet,Not news coverage
+CIVIC_PARTICIPATION,place_engagement,Civic participation rate,Share participating in civic activities,percent,annual,low,context,definition of civic activity,Not voting alone
+CHARITY_COUNT,charities_interventions,Charity count,Registered charities per 100000 population,charities_per_100000,annual,low,context,registration requirements,Not charitable activity
+INTERVENTION_TYPE,charities_interventions,Intervention type,Type of charitable intervention,category,annual,low,context,classification system,Not intervention effectiveness
+BENEFICIARY_COUNT,charities_interventions,Beneficiary count,Direct beneficiaries of charitable interventions per year,count,annual,low,context,definition of beneficiary,Not intervention impact
+POLITICAL_PARTY_COUNT,politics,Political party count,Political parties represented in legislature,count,annual,low,context,party system fragmentation,Not political diversity
+GOVERNMENT_SPENDING,politics,Government spending as share of GDP,General government spending as percentage of GDP,percent,annual,low,context,spending definitions,Not governance quality
+CORRUPTION_PERCEPTION_INDEX,politics,Corruption perception index,Perceived public-sector corruption,index,annual,low,context,perception vs reality methodology,Not actual corruption
+BUSINESS_REGISTRATION,businesses,Business registration rate,New business registrations per 100000 population,registrations_per_100000,annual,low,context,registration requirements,Not business creation
+BUSINESS_DENSITY,businesses,Business density,Registered businesses per 1000 population,businesses_per_1000,annual,low,context,sector definitions,Not economic dynamism
