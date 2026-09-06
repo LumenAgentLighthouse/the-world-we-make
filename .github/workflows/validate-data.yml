@@ -34,6 +34,7 @@ jobs:
               'gap_register.csv': {'gap_id', 'priority', 'gap_class', 'domain', 'falsification_question'},
               'audit_matrix.csv': {'domain', 'data_coverage', 'next_attack', 'priority'},
               'variable_registry.csv': {'variable_id', 'domain', 'variable_name', 'status'},
+              'relationship_type_registry.csv': {'relationship_type_id', 'name', 'definition', 'directionality'},
           }
           for path in list(pathlib.Path('data').glob('*.csv')) + list(pathlib.Path('variables').glob('*.csv')) + list(pathlib.Path('known-gaps').glob('*.csv')):
               with path.open(newline='', encoding='utf-8-sig') as f:
@@ -54,6 +55,16 @@ jobs:
                   dupes = sorted({x for x in ids if x and ids.count(x) > 1})
                   if dupes:
                       failures.append(f'{path}: duplicate observation_id values: {dupes}')
+              if 'relationship_type_id' in headers:
+                  ids = [r.get('relationship_type_id') for r in rows]
+                  dupes = sorted({x for x in ids if x and ids.count(x) > 1})
+                  if dupes:
+                      failures.append(f'{path}: duplicate relationship_type_id values: {dupes}')
+                  allowed_directionality = {'DIRECTED', 'UNDIRECTED'}
+                  for i, row in enumerate(rows, start=2):
+                      directionality = row.get('directionality', '')
+                      if directionality and directionality not in allowed_directionality:
+                          failures.append(f'{path}:{i}: invalid directionality: {directionality!r}')
               if 'value_numeric' in headers:
                   for i, row in enumerate(rows, start=2):
                       value = row.get('value_numeric', '')
