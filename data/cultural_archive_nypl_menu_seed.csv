@@ -1,0 +1,8 @@
+observation_id,source_id,record_id,time_id,place,variable_id,value_text,value_numeric,unit,evidence_type,confidence,notes
+NYPL_MENU_0001,NYPL_MENUS,neh-whats-on-menu-1900-childs,1900,New York City New York,MENU_DISH_PRICE,ham cakes with tomato sauce,10,cents,menu_archive,high,Child's Lunch Rooms; economical meal; winter 1900; price is nominal historical currency
+NYPL_MENU_0002,NYPL_MENUS,neh-whats-on-menu-1900-childs,1900,New York City New York,MENU_DISH_PRICE,buttermilk,5,cents,menu_archive,high,Child's Lunch Rooms; economical meal; winter 1900; price is nominal historical currency
+NYPL_MENU_0003,NYPL_MENUS,neh-whats-on-menu-1900-childs,1900,New York City New York,MENU_DISH_PRICE,corn starch with cream,5,cents,menu_archive,high,Child's Lunch Rooms; economical meal; winter 1900; price is nominal historical currency
+NYPL_MENU_0004,NYPL_MENUS,neh-whats-on-menu-1900-manhattan,1900,New York City New York,MENU_DISH_PRICE,pickled oysters Saint Nicolas,40,cents,menu_archive,high,Manhattan Hotel; winter 1900; price is nominal historical currency
+NYPL_MENU_0005,NYPL_MENUS,neh-whats-on-menu-1900-manhattan,1900,New York City New York,MENU_DISH_PRICE,cold sliced capon,90,cents,menu_archive,high,Manhattan Hotel; winter 1900; price is nominal historical currency
+NYPL_MENU_0006,NYPL_MENUS,neh-whats-on-menu-1900-manhattan,1900,New York City New York,MENU_DISH_PRICE,dandelion salad,40,cents,menu_archive,high,Manhattan Hotel; winter 1900; price is nominal historical currency
+NYPL_MENU_0007,NYPL_MENUS,neh-whats-on-menu-1900-manhattan,1900,New York City New York,MENU_DISH_PRICE,Bar-le-Duc jelly,50,cents,menu_archive,high,Manhattan Hotel; winter 1900; price is nominal historical currency
