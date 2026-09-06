@@ -1,54 +1,54 @@
-place_id,country,place_name,place_type,notes
-AFG,Afghanistan,Afghanistan,country,ISO-like project code
-MNG,Mongolia,Mongolia,country,ISO-like project code
-FJI,Fiji,Fiji,country,ISO-like project code
-USA,United States,United States,country,ISO-like project code
-GEO,Georgia,Georgia,country,ISO-like project code
-LCA,Saint Lucia,Saint Lucia,country,ISO-like project code
-OMN,Oman,Oman,country,ISO-like project code
-BHS,Bahamas,Bahamas,country,ISO-like project code
-CIV,Cote d'Ivoire,Cote d'Ivoire,country,ISO-like project code
-BRA,Brazil,Brazil,country,ISO-like project code
-CAN,Canada,Canada,country,ISO-like project code
-CHN,China,China,country,ISO-like project code
-DEU,Germany,Germany,country,ISO-like project code
-FRA,France,France,country,ISO-like project code
-GBR,United Kingdom,United Kingdom,country,ISO-like project code
-IND,India,India,country,ISO-like project code
-IDN,Indonesia,Indonesia,country,ISO-like project code
-JPN,Japan,Japan,country,ISO-like project code
-KOR,South Korea,South Korea,country,ISO-like project code
-MEX,Mexico,Mexico,country,ISO-like project code
-NGA,Nigeria,Nigeria,country,ISO-like project code
-PAK,Pakistan,Pakistan,country,ISO-like project code
-ZAF,South Africa,South Africa,country,ISO-like project code
-ETH,Ethiopia,Ethiopia,country,ISO-like project code
-EGY,Egypt,Egypt,country,ISO-like project code
-BGD,Bangladesh,Bangladesh,country,ISO-like project code
-VNM,Vietnam,Vietnam,country,ISO-like project code
-THA,Thailand,Thailand,country,ISO-like project code
-PHL,Philippines,Philippines,country,ISO-like project code
-MYS,Malaysia,Malaysia,country,ISO-like project code
-AUT,Austria,Austria,country,ISO-like project code
-BEL,Belgium,Belgium,country,ISO-like project code
-COL,Colombia,Colombia,country,ISO-like project code
-DNK,Denmark,Denmark,country,ISO-like project code
-FIN,Finland,Finland,country,ISO-like project code
-GRC,Greece,Greece,country,ISO-like project code
-HUN,Hungary,Hungary,country,ISO-like project code
-IRL,Ireland,Ireland,country,ISO-like project code
-ISR,Israel,Israel,country,ISO-like project code
-ITA,Italy,Italy,country,ISO-like project code
-NLD,Netherlands,Netherlands,country,ISO-like project code
-POL,Poland,Poland,country,ISO-like project code
-PRT,Portugal,Portugal,country,ISO-like project code
-SAU,Saudi Arabia,Saudi Arabia,country,ISO-like project code
-ESP,Spain,Spain,country,ISO-like project code
-SWE,Sweden,Sweden,country,ISO-like project code
-CHE,Switzerland,Switzerland,country,ISO-like project code
-TUR,Turkey,Turkey,country,ISO-like project code
-ARE,United Arab Emirates,United Arab Emirates,country,ISO-like project code
-NZL,New Zealand,New Zealand,country,ISO-like project code
-ZWE,Zimbabwe,Zimbabwe,country,ISO-like project code
-RUS,Russia,Russia,country,ISO-like project code
-AUS,Australia,Australia,country,ISO-like project code
+place_id,country,place_name,place_type,latitude,longitude,notes
+AFG,Afghanistan,Afghanistan,country,33.93911,67.70995,ISO-like project code; approximate country centroid
+MNG,Mongolia,Mongolia,country,46.86250,103.84666,ISO-like project code; approximate country centroid
+FJI,Fiji,Fiji,country,-17.71338,178.06503,ISO-like project code; approximate country centroid
+USA,United States,United States,country,37.09024,-95.71289,ISO-like project code; approximate country centroid
+GEO,Georgia,Georgia,country,42.31540,43.35689,ISO-like project code; approximate country centroid
+LCA,Saint Lucia,Saint Lucia,country,13.90000,-60.98333,ISO-like project code; approximate country centroid
+OMN,Oman,Oman,country,21.47350,55.97540,ISO-like project code; approximate country centroid
+BHS,Bahamas,Bahamas,country,25.03430,-77.39630,ISO-like project code; approximate country centroid
+CIV,Cote d'Ivoire,Cote d'Ivoire,country,7.54000,-5.54710,ISO-like project code; approximate country centroid
+BRA,Brazil,Brazil,country,-14.23500,-51.92528,ISO-like project code; approximate country centroid
+CAN,Canada,Canada,country,56.13036,-106.34677,ISO-like project code; approximate country centroid
+CHN,China,China,country,35.86166,104.19540,ISO-like project code; approximate country centroid
+DEU,Germany,Germany,country,51.16569,10.45152,ISO-like project code; approximate country centroid
+FRA,France,France,country,46.22764,2.21374,ISO-like project code; approximate country centroid
+GBR,United Kingdom,United Kingdom,country,55.37805,-3.43597,ISO-like project code; approximate country centroid
+IND,India,India,country,20.59368,78.96288,ISO-like project code; approximate country centroid
+IDN,Indonesia,Indonesia,country,-0.78928,113.92133,ISO-like project code; approximate country centroid
+JPN,Japan,Japan,country,36.20482,138.25292,ISO-like project code; approximate country centroid
+KOR,South Korea,South Korea,country,35.90776,127.76692,ISO-like project code; approximate country centroid
+MEX,Mexico,Mexico,country,23.63450,-102.55280,ISO-like project code; approximate country centroid
+NGA,Nigeria,Nigeria,country,9.08200,8.67530,ISO-like project code; approximate country centroid
+PAK,Pakistan,Pakistan,country,30.37532,69.34512,ISO-like project code; approximate country centroid
+ZAF,South Africa,South Africa,country,-30.55948,22.93751,ISO-like project code; approximate country centroid
+ETH,Ethiopia,Ethiopia,country,9.14500,40.48967,ISO-like project code; approximate country centroid
+EGY,Egypt,Egypt,country,26.82055,30.80250,ISO-like project code; approximate country centroid
+BGD,Bangladesh,Bangladesh,country,23.68500,90.35633,ISO-like project code; approximate country centroid
+VNM,Vietnam,Vietnam,country,14.05832,108.27720,ISO-like project code; approximate country centroid
+THA,Thailand,Thailand,country,15.87003,100.99254,ISO-like project code; approximate country centroid
+PHL,Philippines,Philippines,country,12.87972,121.77402,ISO-like project code; approximate country centroid
+MYS,Malaysia,Malaysia,country,4.21050,101.97577,ISO-like project code; approximate country centroid
+AUT,Austria,Austria,country,47.51623,14.55007,ISO-like project code; approximate country centroid
+BEL,Belgium,Belgium,country,50.50389,4.46994,ISO-like project code; approximate country centroid
+COL,Colombia,Colombia,country,4.57087,-74.29733,ISO-like project code; approximate country centroid
+DNK,Denmark,Denmark,country,56.26392,9.50179,ISO-like project code; approximate country centroid
+FIN,Finland,Finland,country,61.92411,25.74815,ISO-like project code; approximate country centroid
+GRC,Greece,Greece,country,39.07421,21.82431,ISO-like project code; approximate country centroid
+HUN,Hungary,Hungary,country,47.16249,19.50330,ISO-like project code; approximate country centroid
+IRL,Ireland,Ireland,country,53.41291,-8.24389,ISO-like project code; approximate country centroid
+ISR,Israel,Israel,country,31.04605,34.85161,ISO-like project code; approximate country centroid
+ITA,Italy,Italy,country,41.87194,12.56738,ISO-like project code; approximate country centroid
+NLD,Netherlands,Netherlands,country,52.13263,5.29127,ISO-like project code; approximate country centroid
+POL,Poland,Poland,country,51.91944,19.14514,ISO-like project code; approximate country centroid
+PRT,Portugal,Portugal,country,39.39987,-8.22445,ISO-like project code; approximate country centroid
+SAU,Saudi Arabia,Saudi Arabia,country,23.88594,45.07916,ISO-like project code; approximate country centroid
+ESP,Spain,Spain,country,40.46367,-3.74922,ISO-like project code; approximate country centroid
+SWE,Sweden,Sweden,country,60.12816,18.64350,ISO-like project code; approximate country centroid
+CHE,Switzerland,Switzerland,country,46.81819,8.22751,ISO-like project code; approximate country centroid
+TUR,Turkey,Turkey,country,38.96375,35.24332,ISO-like project code; approximate country centroid
+ARE,United Arab Emirates,United Arab Emirates,country,23.42408,53.84782,ISO-like project code; approximate country centroid
+NZL,New Zealand,New Zealand,country,-40.90056,174.88597,ISO-like project code; approximate country centroid
+ZWE,Zimbabwe,Zimbabwe,country,-19.01544,29.15486,ISO-like project code; approximate country centroid
+RUS,Russia,Russia,country,61.52401,105.31876,ISO-like project code; approximate country centroid
+AUS,Australia,Australia,country,-25.27440,133.77514,ISO-like project code; approximate country centroid
