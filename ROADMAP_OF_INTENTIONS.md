@@ -64,6 +64,18 @@ A user should be able to ask questions such as:
 
 The system should make uncertainty, missingness, competing explanations and changes in definitions visible rather than presenting inferred relationships as facts.
 
+## Current prototype status
+
+### World Lens prototype — implemented
+
+A first **World Lens visualisation prototype now exists** as `visualization.html` and represents the first concrete implementation of the visualisation direction described above.
+
+The prototype is an experimental implementation rather than a final architectural commitment. Its purpose is to test how existing project data can be explored spatially and visually, and to provide a foundation for the eventual universal temporal data engine.
+
+The roadmap therefore treats World Lens as **implemented prototype / active development**, rather than an entirely future concept.
+
+> **Prototype:** [`visualization.html`](./visualization.html)
+
 ## Intended architectural direction
 
 The visualisation layer should eventually operate over a common conceptual model:
@@ -107,14 +119,15 @@ The intended outcome is a system in which a human can notice something visually,
 - Continue building the underlying global longitudinal dataset.
 - Standardise entities, observations, events, places, time and provenance.
 - Expand cross-domain data and explicit measurement distinctions.
-- Record this visualisation concept as an architectural intention rather than prematurely constraining implementation.
+- ~~Prototype World Lens using existing project data.~~ **Completed as an initial prototype in `visualization.html`; continue iterating from this implementation.**
+- Use the visualisation to expose geographic coverage gaps, dense clusters, missing regions and uneven data availability as part of the project-wide audit.
 
 ### Medium term
 - Define a universal entity/relationship model suitable for visual exploration.
 - Define APIs or data-access conventions for temporal and spatial queries.
-- Prototype World Lens using existing project data.
-- Add time-aware maps, entity histories, event overlays and relationship views.
+- Expand the World Lens prototype into time-aware maps, entity histories, event overlays and relationship views.
 - Make uncertainty, missingness and evidence type first-class visual properties.
+- Turn visually identified coverage gaps into explicit entries in the project's gap/missing-measurement workflow.
 
 ### Long term
 - Implement the **universal temporal data engine**.
@@ -122,6 +135,26 @@ The intended outcome is a system in which a human can notice something visually,
 - Connect World Lens directly to agent discovery and audit workflows.
 - Enable exploration across multiple simultaneous lenses and domains.
 - Support increasingly fine-grained spatial and historical resolution as defensible data becomes available.
+
+## Project-wide audit: what are we forgetting?
+
+The visualisation is now part of the answer to the project's open audit question, **"What are we forgetting?"**
+
+World Lens can reveal classes of missingness that are difficult to see in tables alone, including:
+
+- geographic areas with little or no coverage
+- countries or regions overrepresented relative to the rest of the world
+- dense data clusters surrounded by sparse coverage
+- domains with strong temporal histories but weak spatial coverage
+- spatially covered variables with large temporal gaps
+- places where one lens has rich observations but related phenomena are unmeasured
+- apparent patterns that may be artefacts of uneven measurement rather than real-world differences
+
+These visual gaps should not automatically be treated as evidence that the underlying phenomenon is absent. They are evidence about **measurement coverage** and should feed into the gap register and future data-hunting work.
+
+This creates an additional audit loop:
+
+`VISUAL COVERAGE → IDENTIFY GAP/BIAS → GAP REGISTER → DATA HUNT → DATASET EXPANSION → RE-VISUALISE`
 
 ## Guiding principle
 
